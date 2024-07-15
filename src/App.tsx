@@ -1,5 +1,5 @@
-import NavigationBar from "./components/NavigationBar";
-import Bookings from "./containers/Bookings";
+import { NavigationBar } from "./components/NavigationBar";
+import { Bookings } from "./containers/Bookings";
 
 const App = () => (
   <>

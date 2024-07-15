@@ -1,7 +1,7 @@
 import Logo from "./logo.png";
 import User from "./user.png";
 
-const NavigationBar = () => (
+export const NavigationBar = () => (
   <nav className="shadow-sm bg-slate-50">
     <div className="container mx-auto flex justify-between py-4 items-center">
       <h1>
@@ -12,5 +12,3 @@ const NavigationBar = () => (
     </div>
   </nav>
 );
-
-export default NavigationBar;
