@@ -1,0 +1,54 @@
+[
+  {
+    "id": 1,
+    "propertyId": 3,
+    "checkIn": "2023-03-12T00:00:00.000Z",
+    "checkOut": "2023-03-17T00:00:00.000Z",
+    "adultsAmount": 2,
+    "childrenAmount": 1,
+    "note": "Wheelchair",
+    "guestName": "Paul Ross",
+    "guestEmail": "Paul.ross@email.com",
+    "guestPhoneNumber": "+16634297",
+    "status": 1
+  },
+  {
+    "id": 2,
+    "propertyId": 1,
+    "checkIn": "2023-03-21T00:00:00.000Z",
+    "checkOut": "2023-03-23T00:00:00.000Z",
+    "adultsAmount": 3,
+    "childrenAmount": 4,
+    "note": "2 cars",
+    "guestName": "Ana Simon",
+    "guestEmail": "ana.simon@email.com",
+    "guestPhoneNumber": "+104623499",
+    "status": 0
+  },
+  {
+    "id": 3,
+    "propertyId": 2,
+    "checkIn": "2023-03-07T00:00:00.000Z",
+    "checkOut": "2023-03-14T00:00:00.000Z",
+    "adultsAmount": 2,
+    "childrenAmount": 3,
+    "note": "Late check in",
+    "guestName": "Sarah Lee",
+    "guestEmail": "sara.lee@email.com",
+    "guestPhoneNumber": "+154920384",
+    "status": 1
+  },
+  {
+    "id": 4,
+    "propertyId": 1,
+    "checkIn": "2023-03-24T00:00:00.000Z",
+    "checkOut": "2023-03-29T00:00:00.000Z",
+    "adultsAmount": 2,
+    "childrenAmount": 2,
+    "note": "Thank you for having us!",
+    "guestName": "Tom Bale",
+    "guestEmail": "Tom.Bale@email.com",
+    "guestPhoneNumber": "+1836403846",
+    "status": 1
+  }
+]
