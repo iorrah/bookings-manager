@@ -17,6 +17,7 @@ export const BookingsList: BookingsListType = ({ onClick }) => {
         <button
           className="text-left border block p-2 w-full mb-4"
           onClick={() => onClick(booking)}
+          key={booking.id}
         >
           <p>{booking.guestName}</p>
 
