@@ -1,14 +1,16 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useContext, useEffect, useState } from "react";
 
 import { Booking } from "../../../../types";
 
 import { BookingForm } from "./BookingForm";
 import { BookingQuote } from "./BookingQuote";
+import { BookingsContext } from "../../../../providers/bookings";
 
 type BookingEditorType = FC<{ booking: Booking }>;
 
 export const BookingEditor: BookingEditorType = ({ booking }) => {
   const [editorBooking, setEditorBooking] = useState<Booking>(booking);
+  const { updateBooking } = useContext(BookingsContext);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -23,6 +25,8 @@ export const BookingEditor: BookingEditorType = ({ booking }) => {
     event.preventDefault();
 
     console.log(event.target);
+
+    updateBooking(editorBooking);
   };
 
   useEffect(() => {

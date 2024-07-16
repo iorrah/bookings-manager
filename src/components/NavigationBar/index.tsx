@@ -6,7 +6,7 @@ import Logo from "./logo.png";
 import User from "./user.png";
 
 export const NavigationBar = () => {
-  const bookings = useContext(BookingsContext);
+  const { bookings } = useContext(BookingsContext);
 
   return (
     <nav className="shadow-sm bg-slate-50">

@@ -1,24 +1,31 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 import { Booking } from "../../types";
 
 import { EmptyState } from "./EmptyState";
 import { BookingsList } from "./BookingsList";
 import { BookingDetails } from "./BookingDetails";
+import { BookingsContext } from "../../providers/bookings";
 
 export const BookingsPage = () => {
-  const [booking, setBooking] = useState<Booking | null>(null);
+  const [bookingId, setBookingId] = useState<number | null>(null);
+  const { findBooking } = useContext(BookingsContext);
+  const booking = bookingId ? findBooking(bookingId) : null;
 
-  const handleBookingClick = (updateBooking: Booking | null) => {
-    if (updateBooking && updateBooking.id === booking?.id) {
-      setBooking(null);
+  const closeBooking = () => {
+    setBookingId(null);
+  };
+
+  const handleBookingClick = (selectedBookingId: number | null) => {
+    if (selectedBookingId && selectedBookingId === bookingId) {
+      closeBooking();
     } else {
-      setBooking(updateBooking);
+      setBookingId(selectedBookingId);
     }
   };
 
   const handleCloseBooking = () => {
-    setBooking(null);
+    closeBooking();
   };
 
   return (
