@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 
 import { Booking } from "../../../../types";
 
@@ -8,14 +8,39 @@ import { BookingQuote } from "./BookingQuote";
 type BookingEditorType = FC<{ booking: Booking }>;
 
 export const BookingEditor: BookingEditorType = ({ booking }) => {
+  const [editorBooking, setEditorBooking] = useState<Booking>(booking);
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+
+    setEditorBooking({
+      ...editorBooking,
+      [name]: value
+    });
+  };
+
+  const handleSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    console.log(event.target);
+  };
+
+  useEffect(() => {
+    setEditorBooking(booking);
+  }, [booking]);
+
   return (
     <div className="grid grid-cols-12 gap-4">
       <div className="col-span-6 border">
-        <BookingForm booking={booking} />
+        <BookingForm
+          editorBooking={editorBooking}
+          onChange={handleChange}
+          onSubmit={handleSubmit}
+        />
       </div>
 
       <div className="col-span-6 border">
-        <BookingQuote booking={booking} />
+        <BookingQuote booking={editorBooking} />
       </div>
     </div>
   );
