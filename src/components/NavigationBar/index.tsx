@@ -4,11 +4,9 @@ import { BookingsContext } from "../../providers/bookings";
 
 import Logo from "./logo.png";
 import User from "./user.png";
-import { getActiveBookings } from "../../utils/bookings";
 
 export const NavigationBar = () => {
   const bookings = useContext(BookingsContext);
-  const activeBookings = getActiveBookings(bookings);
 
   return (
     <nav className="shadow-sm bg-slate-50">
@@ -20,7 +18,7 @@ export const NavigationBar = () => {
         <p className="flex items-center">
           <span className="mr-1.5">Bookings Page</span>
           <span className="rounded-full bg-zinc-700 text-white text-xs px-1 py-0.5 font-semibold">
-            {activeBookings.length}
+            {bookings.length}
           </span>
         </p>
 

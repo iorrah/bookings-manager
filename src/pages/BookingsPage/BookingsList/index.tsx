@@ -12,7 +12,7 @@ export const BookingsList: BookingsListType = ({ onClick }) => {
   const bookings = useContext(BookingsContext);
 
   return (
-    <aside>
+    <>
       {bookings.map(booking => (
         <button
           className="text-left border block p-2 w-full mb-4"
@@ -29,6 +29,6 @@ export const BookingsList: BookingsListType = ({ onClick }) => {
           <p>Quantity: {booking.adultsAmount + booking.childrenAmount}</p>
         </button>
       ))}
-    </aside>
+    </>
   );
 };
