@@ -23,9 +23,6 @@ export const BookingEditor: BookingEditorType = ({ booking }) => {
 
   const handleSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    console.log(event.target);
-
     updateBooking(editorBooking);
   };
 

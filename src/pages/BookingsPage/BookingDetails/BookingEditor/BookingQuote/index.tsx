@@ -5,7 +5,9 @@ import { Booking } from "../../../../../types";
 type BookingQuoteType = FC<{ booking: Booking }>;
 
 export const BookingQuote: BookingQuoteType = ({ booking }) => {
-  console.log({ booking });
+  if (!booking) {
+    console.log({ booking });
+  }
 
   return (
     <>

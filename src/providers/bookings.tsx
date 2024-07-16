@@ -6,10 +6,12 @@ import { Booking, Bookings } from "../types";
 export const BookingsContext = createContext<{
   bookings: Bookings;
   updateBooking: (booking: Booking) => void;
-  findBooking: (id: number) => Booking | null;
+  deleteBooking: (bookingId: number) => void;
+  findBooking: (bookingId: number) => Booking | null;
 }>({
   bookings: [],
   updateBooking: () => {},
+  deleteBooking: () => {},
   findBooking: () => null
 });
 
@@ -34,11 +36,21 @@ export const BookingsContextProvider: BookingsContextProviderType = ({
     setBookings(updatedBookings);
   };
 
-  const findBooking = (searchId: number) =>
-    bookings.find(({ id }: Booking) => searchId === id) || null;
+  const deleteBooking = (bookingId: number) => {
+    const updatedBookings = bookings.filter(
+      (booking: Booking) => bookingId !== booking.id
+    );
+
+    setBookings(updatedBookings);
+  };
+
+  const findBooking = (bookingId: number) =>
+    bookings.find(({ id }: Booking) => bookingId === id) || null;
 
   return (
-    <BookingsContext.Provider value={{ bookings, updateBooking, findBooking }}>
+    <BookingsContext.Provider
+      value={{ bookings, updateBooking, deleteBooking, findBooking }}
+    >
       {children}
     </BookingsContext.Provider>
   );
