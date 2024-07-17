@@ -30,7 +30,7 @@ export const BookingQuote: BookingQuoteType = ({ booking }) => {
 
   return (
     <>
-      <div className="border-b p-2">Quote</div>
+      <div className="border-b p-2 font-semibold">Quote</div>
 
       <div className="flex justify-between p-2">
         <p>Property Rate</p>
@@ -42,9 +42,9 @@ export const BookingQuote: BookingQuoteType = ({ booking }) => {
         <p>{format(cleaningFee)}</p>
       </div>
 
-      <div className="flex justify-between p-2">
-        <p>Total</p>
-        <p>{format(total)}</p>
+      <div className="flex justify-between p-2 mt-10">
+        <p className="font-semibold">Total</p>
+        <p className="font-semibold">{format(total)}</p>
       </div>
     </>
   );

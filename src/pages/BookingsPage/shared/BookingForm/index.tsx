@@ -17,8 +17,7 @@ export const BookingForm: BookingForm = ({ booking, onChange, onSubmit }) => {
 
   return (
     <form onSubmit={onSubmit}>
-      <div className="border-b p-2">Booking Details</div>
-
+      <div className="border-b p-2 font-semibold">Booking Details</div>
       <BookingField
         id={booking.id}
         title="Name"
@@ -29,7 +28,6 @@ export const BookingForm: BookingForm = ({ booking, onChange, onSubmit }) => {
         visible={isCreating}
         autoFocus
       />
-
       <BookingField
         id={booking.id}
         title="Email"
@@ -40,7 +38,6 @@ export const BookingForm: BookingForm = ({ booking, onChange, onSubmit }) => {
         type="email"
         visible={isCreating}
       />
-
       <BookingField
         id={booking.id}
         title="Phone"
@@ -51,14 +48,12 @@ export const BookingForm: BookingForm = ({ booking, onChange, onSubmit }) => {
         type="tel"
         visible={isCreating}
       />
-
       <div className="flex justify-between p-2">
         <p>Check in/out</p>
         <p>
           {fullDate(booking.checkIn)} - {fullDate(booking.checkOut)}
         </p>
       </div>
-
       <BookingField
         id={booking.id}
         title="Adults Quantity"
@@ -69,7 +64,6 @@ export const BookingForm: BookingForm = ({ booking, onChange, onSubmit }) => {
         type="number"
         visible={isCreating}
       />
-
       <BookingField
         id={booking.id}
         title="Children Quantity"
@@ -79,7 +73,6 @@ export const BookingForm: BookingForm = ({ booking, onChange, onSubmit }) => {
         type="number"
         visible={isCreating}
       />
-
       <BookingField
         id={booking.id}
         title="Note"
@@ -89,11 +82,13 @@ export const BookingForm: BookingForm = ({ booking, onChange, onSubmit }) => {
         visible={isCreating}
       />
 
-      <div className="flex justify-between px-2 py-8">
+      {/* TODO: create button components */}
+
+      <div className="flex justify-center px-2 py-8 gap-3">
         {isCreating ? null : (
           <button
             type="submit"
-            className="bg-white px-5 py-2.5 text-sm leading-5 rounded-sm font-semibold text-rose-700 border"
+            className="bg-white hover:bg-slate-50 px-5 py-2.5 text-sm leading-5 rounded-sm font-semibold text-neutral-500 border border-slate-300"
           >
             Discard Changes
           </button>
@@ -101,9 +96,9 @@ export const BookingForm: BookingForm = ({ booking, onChange, onSubmit }) => {
 
         <button
           type="submit"
-          className="bg-sky-500 hover:bg-sky-700 px-5 py-2.5 text-sm leading-5 rounded-sm font-semibold text-white"
+          className="bg-blue-600 hover:bg-blue-700 px-5 py-2.5 text-sm leading-5 rounded-sm font-semibold text-white border"
         >
-          {isCreating ? "Submit" : "Save Changes"}
+          {isCreating ? "Save Booking" : "Save Changes"}
         </button>
       </div>
     </form>

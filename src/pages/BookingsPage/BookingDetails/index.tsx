@@ -24,28 +24,32 @@ export const BookingDetails: BookingDetailsType = ({
   return (
     <div className="border">
       <div className="flex justify-between border-b p-2 mb-8">
-        <p>Booking Reference: #{booking.id}</p>
+        <p>
+          Booking Reference:{" "}
+          <span className="text-slate-700 text-sm	">#{booking.id}</span>
+        </p>
 
         <button onClick={onClose}>Close</button>
       </div>
 
       <div className="pt-2 px-2 pb-10">
-        <div className="flex justify-between mb-6">
+        <div className="flex justify-between items-center mb-6">
           <div>
-            <p>{booking.guestName}</p>
-            <p>Status: {booking.status}</p>
-            <p>Property Name: {property?.title}</p>
+            <p className="text-lg	font-semibold">{booking.guestName}</p>
+
+            <p>
+              {property?.title}{" "}
+              <span className="text-slate-700 text-sm	">#{property?.id}</span>
+            </p>
           </div>
 
-          <div className="flex">
-            <button
-              type="submit"
-              className="bg-white px-5 py-2.5 text-sm leading-5 rounded-sm font-semibold text-rose-700 border"
-              onClick={() => onDelete(booking.id)}
-            >
-              Delete Booking
-            </button>
-          </div>
+          <button
+            type="submit"
+            className="bg-white hover:bg-slate-50 px-5 py-2.5 text-sm leading-5 rounded-sm font-semibold text-rose-700 border border-slate-300"
+            onClick={() => onDelete(booking.id)}
+          >
+            Delete Booking
+          </button>
         </div>
 
         <BookingEditor booking={booking} />
