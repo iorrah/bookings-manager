@@ -1,15 +1,18 @@
 import React, { createContext, FC, useState } from "react";
+import { customAlphabet } from "nanoid";
 
 import bookingsData from "../data/bookings.json";
 import { Booking, Bookings } from "../types";
 
 export const BookingsContext = createContext<{
   bookings: Bookings;
+  createBooking: (booking: Booking) => void;
   updateBooking: (booking: Booking) => void;
   deleteBooking: (bookingId: number) => void;
   findBooking: (bookingId: number) => Booking | null;
 }>({
   bookings: [],
+  createBooking: () => {},
   updateBooking: () => {},
   deleteBooking: () => {},
   findBooking: () => null
@@ -22,7 +25,21 @@ type BookingsContextProviderType = FC<{
 export const BookingsContextProvider: BookingsContextProviderType = ({
   children
 }) => {
+  const nanoid = customAlphabet("1234567890", 15);
+
   const [bookings, setBookings] = useState<Bookings>(bookingsData);
+
+  const createBooking = (newBooking: Booking) => {
+    const newBookings = [
+      {
+        ...newBooking,
+        id: Number(nanoid(10))
+      },
+      ...bookings
+    ];
+
+    setBookings(newBookings);
+  };
 
   const updateBooking = (updateBooking: Booking) => {
     const updatedBookings = bookings.map((booking: Booking) => {
@@ -49,7 +66,13 @@ export const BookingsContextProvider: BookingsContextProviderType = ({
 
   return (
     <BookingsContext.Provider
-      value={{ bookings, updateBooking, deleteBooking, findBooking }}
+      value={{
+        bookings,
+        createBooking,
+        updateBooking,
+        deleteBooking,
+        findBooking
+      }}
     >
       {children}
     </BookingsContext.Provider>

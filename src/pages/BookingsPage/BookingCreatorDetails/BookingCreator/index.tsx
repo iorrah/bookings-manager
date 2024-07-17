@@ -1,16 +1,21 @@
 import { FC, useContext, useEffect, useState } from "react";
 
 import { Booking } from "../../../../types";
-
 import { BookingForm } from "../../shared/BookingForm";
 import { BookingQuote } from "../../shared/BookingQuote";
 import { BookingsContext } from "../../../../providers/bookings";
 
-type BookingCreatorType = FC<{ booking: Booking }>;
+type BookingCreatorType = FC<{
+  booking: Booking;
+  onResetBookingCreation: () => void;
+}>;
 
-export const BookingCreator: BookingCreatorType = ({ booking }) => {
+export const BookingCreator: BookingCreatorType = ({
+  booking,
+  onResetBookingCreation
+}) => {
   const [draftBooking, setDraftBooking] = useState<Booking>(booking);
-  const { updateBooking } = useContext(BookingsContext);
+  const { createBooking } = useContext(BookingsContext);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -23,7 +28,8 @@ export const BookingCreator: BookingCreatorType = ({ booking }) => {
 
   const handleSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
-    updateBooking(draftBooking);
+    createBooking(draftBooking);
+    onResetBookingCreation();
   };
 
   useEffect(() => {

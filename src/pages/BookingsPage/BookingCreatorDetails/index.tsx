@@ -7,11 +7,13 @@ import { BookingCreator } from "./BookingCreator";
 type BookingCreatorDetailsType = FC<{
   booking: Booking;
   onDiscard: () => void;
+  onResetBookingCreation: () => void;
 }>;
 
 export const BookingCreatorDetails: BookingCreatorDetailsType = ({
   booking,
-  onDiscard
+  onDiscard,
+  onResetBookingCreation
 }) => {
   return (
     <div className="border">
@@ -32,7 +34,10 @@ export const BookingCreatorDetails: BookingCreatorDetailsType = ({
           </div>
         </div>
 
-        <BookingCreator booking={booking} />
+        <BookingCreator
+          booking={booking}
+          onResetBookingCreation={onResetBookingCreation}
+        />
       </div>
     </div>
   );

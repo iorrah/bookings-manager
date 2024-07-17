@@ -56,9 +56,7 @@ export const BookingsPage = () => {
     closeBooking();
   };
 
-  const handleCreateBooking = () => {
-    closeBooking();
-
+  const resetBookingCreation = () => {
     let date = new Date();
     date.setDate(date.getDate() + 1);
 
@@ -75,6 +73,16 @@ export const BookingsPage = () => {
       guestPhoneNumber: "",
       status: 1
     });
+  };
+
+  const handleStartBookingCreation = () => {
+    closeBooking();
+    resetBookingCreation();
+  };
+
+  const handleBookingCreationReset = () => {
+    console.log("3333");
+    resetBookingCreation();
   };
 
   const handleDiscard = () => {
@@ -94,7 +102,7 @@ export const BookingsPage = () => {
       <aside className="col-span-3">
         <BookingsList
           onSelectBooking={handleBookingSelection}
-          onCreateBooking={handleCreateBooking}
+          onCreateBooking={handleStartBookingCreation}
         />
       </aside>
 
@@ -103,6 +111,7 @@ export const BookingsPage = () => {
           <BookingCreatorDetails
             booking={newBooking}
             onDiscard={handleDiscard}
+            onResetBookingCreation={handleBookingCreationReset}
           />
         ) : null}
 
