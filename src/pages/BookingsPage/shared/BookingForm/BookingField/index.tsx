@@ -10,6 +10,8 @@ type BookingField = FC<{
   required?: boolean;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   type?: "number" | "text";
+  visible?: boolean;
+  autoFocus?: boolean;
 }>;
 
 export const BookingField: BookingField = ({
@@ -19,11 +21,15 @@ export const BookingField: BookingField = ({
   value,
   required,
   onChange,
-  type
+  type,
+  visible,
+  autoFocus
 }) => {
   const [editing, setEditing] = useState(false);
 
-  const handleClick = () => setEditing(true);
+  const handleClick = () => {
+    setEditing(true);
+  };
 
   useEffect(() => {
     setEditing(false);
@@ -33,15 +39,16 @@ export const BookingField: BookingField = ({
     <div className="flex justify-between p-2">
       <p>{title}</p>
 
-      {editing ? (
+      {visible || editing ? (
         <input
           type={type || "text"}
           name={field}
           value={value}
           className="text-right border"
           onChange={onChange}
-          autoFocus
+          autoFocus={autoFocus}
           required={required}
+          placeholder={`Enter ${title.toLowerCase()}`}
         />
       ) : (
         <p className="flex cursor-pointer" onClick={handleClick}>

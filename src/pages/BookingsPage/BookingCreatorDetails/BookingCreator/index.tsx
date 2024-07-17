@@ -2,8 +2,8 @@ import { FC, useContext, useEffect, useState } from "react";
 
 import { Booking } from "../../../../types";
 
-import { BookingForm } from "./BookingForm";
-import { BookingQuote } from "./BookingQuote";
+import { BookingForm } from "../../shared/BookingForm";
+import { BookingQuote } from "../../shared/BookingQuote";
 import { BookingsContext } from "../../../../providers/bookings";
 
 type BookingCreatorType = FC<{ booking: Booking }>;
@@ -34,7 +34,7 @@ export const BookingCreator: BookingCreatorType = ({ booking }) => {
     <div className="grid grid-cols-12 gap-4">
       <div className="col-span-6 border">
         <BookingForm
-          editorBooking={editorBooking}
+          booking={editorBooking}
           onChange={handleChange}
           onSubmit={handleSubmit}
         />

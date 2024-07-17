@@ -10,6 +10,8 @@ type BookingDetailsType = FC<{
   onDelete: (bookingId: number) => void;
 }>;
 
+// TODO: this component might not be necesary
+
 export const BookingDetails: BookingDetailsType = ({
   booking,
   onClose,
