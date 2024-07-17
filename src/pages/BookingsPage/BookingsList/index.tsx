@@ -30,7 +30,10 @@ export const BookingsList: BookingsListType = ({
 
           <p>Status: {booking.status}</p>
 
-          <p>Quantity: {booking.adultsAmount + booking.childrenAmount}</p>
+          <p>
+            Quantity:{" "}
+            {Number(booking.adultsAmount) + Number(booking.childrenAmount)}
+          </p>
         </button>
       ))}
 
