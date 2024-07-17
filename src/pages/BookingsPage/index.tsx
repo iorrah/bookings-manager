@@ -10,8 +10,8 @@ import { BookingCreatorDetails } from "./BookingCreatorDetails";
 
 export const BookingsPage = () => {
   const [bookingId, setBookingId] = useState<number | null>(null);
-  const [booking, setBooking] = useState<Booking | null>(null);
-  const [creatingBooking, setCreatingBooking] = useState<Booking | null>(null);
+  const [existingBooking, setExistingBooking] = useState<Booking | null>(null);
+  const [newBooking, setNewBooking] = useState<Booking | null>(null);
 
   const { bookings, findBooking, deleteBooking } = useContext(BookingsContext);
 
@@ -24,7 +24,7 @@ export const BookingsPage = () => {
       closeBooking();
     } else {
       setBookingId(selectedBookingId);
-      setCreatingBooking(null);
+      setNewBooking(null);
     }
   };
 
@@ -62,7 +62,7 @@ export const BookingsPage = () => {
     let date = new Date();
     date.setDate(date.getDate() + 1);
 
-    setCreatingBooking({
+    setNewBooking({
       id: 0,
       propertyId: 0,
       checkIn: new Date().toISOString(),
@@ -78,16 +78,16 @@ export const BookingsPage = () => {
   };
 
   const handleDiscard = () => {
-    setCreatingBooking(null);
+    setNewBooking(null);
   };
 
   useEffect(() => {
     if (bookingId) {
-      setBooking(findBooking(bookingId));
+      setExistingBooking(findBooking(bookingId));
     } else {
-      setBooking(null);
+      setExistingBooking(null);
     }
-  }, [bookingId]);
+  }, [bookingId, bookings]);
 
   return (
     <main className="container mx-auto flex py-4 grid grid-cols-12 gap-4">
@@ -99,22 +99,22 @@ export const BookingsPage = () => {
       </aside>
 
       <article className="col-span-9">
-        {creatingBooking ? (
+        {newBooking ? (
           <BookingCreatorDetails
-            booking={creatingBooking}
+            booking={newBooking}
             onDiscard={handleDiscard}
           />
         ) : null}
 
-        {!creatingBooking && booking ? (
+        {!newBooking && existingBooking ? (
           <BookingDetails
-            booking={booking}
+            booking={existingBooking}
             onClose={handleCloseBooking}
             onDelete={handleNextBooking}
           />
         ) : null}
 
-        {!creatingBooking && !booking ? <EmptyState /> : null}
+        {!newBooking && !existingBooking ? <EmptyState /> : null}
       </article>
     </main>
   );
