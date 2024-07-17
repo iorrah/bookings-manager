@@ -1,13 +1,32 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
 
-import { Booking } from "../../../../../types";
+import { Booking } from "../../../../types";
+import { PropertiesContext } from "../../../../providers/properties";
+import { differenceInDays } from "date-fns";
 
 type BookingQuoteType = FC<{ booking: Booking }>;
 
 export const BookingQuote: BookingQuoteType = ({ booking }) => {
-  if (!booking) {
-    console.log({ booking });
-  }
+  // Data sources
+  const { findProperty } = useContext(PropertiesContext);
+  const property = findProperty(booking.propertyId);
+
+  // Booking Data
+  const checkIn = new Date(booking.checkIn);
+  const checkOut = new Date(booking.checkOut);
+  const bookingDaysQuantity = differenceInDays(checkOut, checkIn);
+
+  // Calculating Booking Price
+  const pricePerNight = property?.pricePerNight || 0;
+  const pricePerBooking = pricePerNight * bookingDaysQuantity;
+  const cleaningFee = property?.cleaningFee || 0;
+  const total = pricePerBooking + cleaningFee;
+
+  // Data format for presentation
+  const { format } = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD"
+  });
 
   return (
     <>
@@ -15,17 +34,17 @@ export const BookingQuote: BookingQuoteType = ({ booking }) => {
 
       <div className="flex justify-between p-2">
         <p>Property Rate</p>
-        <p>$30 x 3 nights</p>
+        <p>{format(pricePerBooking)}</p>
       </div>
 
       <div className="flex justify-between p-2">
         <p>Cleaning Fee</p>
-        <p>$100</p>
+        <p>{format(cleaningFee)}</p>
       </div>
 
       <div className="flex justify-between p-2">
         <p>Total</p>
-        <p>$400.00</p>
+        <p>{format(total)}</p>
       </div>
     </>
   );

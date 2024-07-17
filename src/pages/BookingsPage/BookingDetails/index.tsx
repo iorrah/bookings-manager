@@ -1,8 +1,9 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
 
 import { Booking } from "../../../types";
 
 import { BookingEditor } from "./BookingEditor";
+import { PropertiesContext } from "../../../providers/properties";
 
 type BookingDetailsType = FC<{
   booking: Booking;
@@ -17,6 +18,9 @@ export const BookingDetails: BookingDetailsType = ({
   onClose,
   onDelete
 }) => {
+  const { findProperty } = useContext(PropertiesContext);
+  const property = findProperty(booking.propertyId);
+
   return (
     <div className="border">
       <div className="flex justify-between border-b p-2 mb-8">
@@ -30,7 +34,7 @@ export const BookingDetails: BookingDetailsType = ({
           <div>
             <p>{booking.guestName}</p>
             <p>Status: {booking.status}</p>
-            <p>Property Name: ______</p>
+            <p>Property Name: {property?.title}</p>
           </div>
 
           <div className="flex">
