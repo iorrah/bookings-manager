@@ -9,7 +9,7 @@ type BookingField = FC<{
   value: string;
   required?: boolean;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  type?: "number" | "text";
+  type?: string;
   visible?: boolean;
   autoFocus?: boolean;
 }>;

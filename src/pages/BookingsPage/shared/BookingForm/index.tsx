@@ -37,6 +37,7 @@ export const BookingForm: BookingForm = ({ booking, onChange, onSubmit }) => {
         value={booking.guestEmail}
         onChange={onChange}
         required
+        type="email"
         visible={isCreating}
       />
 
@@ -47,6 +48,7 @@ export const BookingForm: BookingForm = ({ booking, onChange, onSubmit }) => {
         value={booking.guestPhoneNumber}
         onChange={onChange}
         required
+        type="tel"
         visible={isCreating}
       />
 
