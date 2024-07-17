@@ -1,7 +1,7 @@
 import { FC, useContext } from "react";
 
 import { BookingsContext } from "../../../providers/bookings";
-import { fullDate } from "../../../utils/date";
+import { formatStatus, fullDate } from "../../../utils";
 
 type BookingsListType = FC<{
   onSelectBooking: (bookingId: number) => void;
@@ -22,18 +22,34 @@ export const BookingsList: BookingsListType = ({
           onClick={() => onSelectBooking(booking.id)}
           key={booking.id}
         >
-          <p className="font-semibold">{booking.guestName}</p>
+          <div className="flex justify-between items-center">
+            <div>
+              <p className="font-semibold">{booking.guestName}</p>
 
-          <p>
-            {fullDate(booking.checkIn)} - {fullDate(booking.checkOut)}
-          </p>
+              <p>
+                {fullDate(booking.checkIn)} - {fullDate(booking.checkOut)}
+              </p>
 
-          <p>Status: {booking.status}</p>
+              <p className="text-slate-500">
+                {Number(booking.adultsAmount) + Number(booking.childrenAmount)}{" "}
+                guests
+              </p>
+            </div>
 
-          <p>
-            Quantity:{" "}
-            {Number(booking.adultsAmount) + Number(booking.childrenAmount)}
-          </p>
+            <div className="mt-1 flex items-center gap-x-1.5">
+              {booking.status === 1 ? (
+                <>
+                  <div className="flex-none rounded-full bg-emerald-500/20 p-1">
+                    <div className="h-1.5 w-1.5 rounded-full bg-emerald-500"></div>
+                  </div>
+
+                  <p className="text-xs leading-5 text-gray-500">
+                    {formatStatus(booking.status)}
+                  </p>
+                </>
+              ) : null}
+            </div>
+          </div>
         </button>
       ))}
 

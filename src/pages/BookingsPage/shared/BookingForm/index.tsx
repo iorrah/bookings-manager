@@ -2,7 +2,7 @@ import { FC } from "react";
 
 // TODO: use absolute paths
 import { Booking } from "../../../../types";
-import { fullDate } from "../../../../utils/date";
+import { fullDate } from "../../../../utils/";
 
 import { BookingField } from "./BookingField";
 

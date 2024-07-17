@@ -28,10 +28,6 @@ export const BookingCreatorDetails: BookingCreatorDetailsType = ({
           <div>
             <p>Property Name: (select dropdown)</p>
           </div>
-
-          <div className="flex">
-            <p>Status: {booking.status}</p>
-          </div>
         </div>
 
         <BookingCreator
