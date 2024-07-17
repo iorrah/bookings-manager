@@ -82,7 +82,7 @@ export const BookingForm: BookingForm = ({ booking, onChange, onSubmit }) => {
         visible={isCreating}
       />
 
-      {/* TODO: create button components */}
+      {/* TODO: implement discard functionality */}
 
       <div className="flex justify-center px-2 py-8 gap-3">
         {isCreating ? null : (
@@ -93,6 +93,8 @@ export const BookingForm: BookingForm = ({ booking, onChange, onSubmit }) => {
             Discard Changes
           </button>
         )}
+
+        {/* TODO: create button components */}
 
         <button
           type="submit"

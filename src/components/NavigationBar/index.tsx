@@ -1,28 +1,25 @@
-import { useContext } from "react";
-
-import { BookingsContext } from "../../providers/bookings";
-
-import Logo from "./logo.png";
-import User from "./user.png";
+import Logo from "./logo.svg";
+import User from "./user.svg";
 
 export const NavigationBar = () => {
-  const { bookings } = useContext(BookingsContext);
-
   return (
-    <nav className="shadow-sm bg-slate-50">
+    <nav className="shadow-md bg-white">
       <div className="container mx-auto flex justify-between py-4 items-center">
-        <h1>
-          <img src={Logo} alt="Bookings Manageer Logo" className="w-20" />
-        </h1>
+        <img
+          src={Logo}
+          alt="Bookings Manageer Logo"
+          className="w-24 cursor-pointer"
+        />
 
         <p className="flex items-center">
-          <span className="mr-1.5">Bookings Page</span>
-          <span className="rounded-full bg-zinc-700 text-white text-xs px-1 py-0.5 font-semibold">
-            {bookings.length}
-          </span>
+          <span className="mr-1.5 font-semibold text-lg">Bookings Page</span>
         </p>
 
-        <img src={User} alt="User Profile Image" className="rounded-full w-8" />
+        <img
+          src={User}
+          alt="User Profile Image"
+          className="rounded-full w-8 cursor-pointer border border-blue-600 border-4"
+        />
       </div>
     </nav>
   );

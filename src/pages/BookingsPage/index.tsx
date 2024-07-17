@@ -81,7 +81,6 @@ export const BookingsPage = () => {
   };
 
   const handleBookingCreationReset = () => {
-    console.log("3333");
     resetBookingCreation();
   };
 
@@ -98,7 +97,7 @@ export const BookingsPage = () => {
   }, [bookingId, bookings]);
 
   return (
-    <main className="container mx-auto flex py-4 grid grid-cols-12 gap-4">
+    <main className="container mx-auto flex py-10 grid grid-cols-12 gap-4">
       <aside className="col-span-3">
         <BookingsList
           onSelectBooking={handleBookingSelection}
