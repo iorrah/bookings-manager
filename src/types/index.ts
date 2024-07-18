@@ -10,6 +10,7 @@ export type Booking = {
   guestEmail: string;
   guestPhoneNumber: string;
   status: number;
+  createdAt: string;
 };
 
 export type Bookings = Booking[];

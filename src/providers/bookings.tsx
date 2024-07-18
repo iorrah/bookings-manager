@@ -33,7 +33,9 @@ export const BookingsContextProvider: BookingsContextProviderType = ({
     const newBookings = [
       {
         ...newBooking,
-        id: Number(nanoid(10))
+        id: Number(nanoid(10)),
+        status: 1,
+        createdAt: new Date().toISOString()
       },
       ...bookings
     ];

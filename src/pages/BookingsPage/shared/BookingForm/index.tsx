@@ -5,6 +5,7 @@ import { Booking } from "../../../../types";
 
 import { BookingField } from "./BookingField";
 import { BookingDateField } from "./BookingDateField";
+import { isCreating } from "../../../../utils";
 
 type BookingForm = FC<{
   booking: Booking;
@@ -19,7 +20,7 @@ export const BookingForm: BookingForm = ({
   onDateChange,
   onSubmit
 }) => {
-  const isCreating = booking.id === 0;
+  const creating = isCreating(booking.status);
 
   return (
     <form onSubmit={onSubmit}>
@@ -31,7 +32,7 @@ export const BookingForm: BookingForm = ({
         value={booking.guestName}
         onChange={onChange}
         required
-        visible={isCreating}
+        visible={creating}
       />
       <BookingField
         id={booking.id}
@@ -41,7 +42,7 @@ export const BookingForm: BookingForm = ({
         onChange={onChange}
         required
         type="email"
-        visible={isCreating}
+        visible={creating}
       />
       <BookingField
         id={booking.id}
@@ -51,7 +52,7 @@ export const BookingForm: BookingForm = ({
         onChange={onChange}
         required
         type="tel"
-        visible={isCreating}
+        visible={creating}
       />
 
       <BookingDateField booking={booking} onChange={onDateChange} />
@@ -64,7 +65,7 @@ export const BookingForm: BookingForm = ({
         onChange={onChange}
         required
         type="number"
-        visible={isCreating}
+        visible={creating}
       />
       <BookingField
         id={booking.id}
@@ -73,7 +74,7 @@ export const BookingForm: BookingForm = ({
         value={String(booking.childrenAmount)}
         onChange={onChange}
         type="number"
-        visible={isCreating}
+        visible={creating}
       />
       <BookingField
         id={booking.id}
@@ -81,13 +82,13 @@ export const BookingForm: BookingForm = ({
         field="note"
         value={booking.note}
         onChange={onChange}
-        visible={isCreating}
+        visible={creating}
       />
 
       {/* TODO: implement discard functionality */}
 
       <div className="flex justify-center px-2 py-8 gap-3">
-        {isCreating ? null : (
+        {creating ? null : (
           <button
             type="submit"
             className="bg-slate-100 hover:bg-slate-200 px-5 py-2.5 text-sm leading-5 rounded-sm font-semibold text-neutral-500 border border-slate-300 shadow-sm"
@@ -102,7 +103,7 @@ export const BookingForm: BookingForm = ({
           type="submit"
           className="bg-blue-600 hover:bg-blue-700 px-5 py-2.5 text-sm leading-5 rounded-sm font-semibold text-white shadow-sm"
         >
-          {isCreating ? "Save Booking" : "Save Changes"}
+          {creating ? "Save Booking" : "Save Changes"}
         </button>
       </div>
     </form>

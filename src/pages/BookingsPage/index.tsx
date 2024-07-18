@@ -71,7 +71,8 @@ export const BookingsPage = () => {
       guestName: "",
       guestEmail: "",
       guestPhoneNumber: "",
-      status: 1
+      status: 0,
+      createdAt: ""
     });
   };
 

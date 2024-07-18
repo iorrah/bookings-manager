@@ -5,6 +5,7 @@ import { BookingForm } from "../shared/BookingForm";
 import { BookingQuote } from "../shared/BookingQuote";
 import { Booking } from "../../../types";
 import { PropertiesContext } from "../../../providers/properties";
+import { fullDate } from "../../../utils";
 
 type BookingEditorType = FC<{
   booking: Booking;
@@ -74,7 +75,11 @@ export const BookingEditor: BookingEditorType = ({
 
             <p>
               {property?.title}{" "}
-              <span className="text-slate-700 text-sm	">#{property?.id}</span>
+              <span className="text-gray-500 text-sm">#{property?.id}</span>
+            </p>
+
+            <p className="text-gray-500 text-sm">
+              Booked on {fullDate(booking.createdAt)}
             </p>
           </div>
 

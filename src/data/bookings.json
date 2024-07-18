@@ -10,7 +10,8 @@
     "guestName": "Paul Ross",
     "guestEmail": "Paul.ross@email.com",
     "guestPhoneNumber": "+16634297",
-    "status": 1
+    "status": 1,
+    "createdAt": "2024-06-12T00:00:00.000Z"
   },
   {
     "id": 8784339168,
@@ -23,7 +24,8 @@
     "guestName": "Ana Simon",
     "guestEmail": "ana.simon@email.com",
     "guestPhoneNumber": "+104623499",
-    "status": 1
+    "status": 1,
+    "createdAt": "2024-02-18T00:00:00.000Z"
   },
   {
     "id": 2390594199,
@@ -36,7 +38,8 @@
     "guestName": "Sarah Lee",
     "guestEmail": "sara.lee@email.com",
     "guestPhoneNumber": "+154920384",
-    "status": 1
+    "status": 1,
+    "createdAt": "2024-03-04T00:00:00.000Z"
   },
   {
     "id": 2068913267,
@@ -49,6 +52,7 @@
     "guestName": "Tom Bale",
     "guestEmail": "Tom.Bale@email.com",
     "guestPhoneNumber": "+1836403846",
-    "status": 1
+    "status": 1,
+    "createdAt": "2024-04-20T00:00:00.000Z"
   }
 ]

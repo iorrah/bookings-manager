@@ -7,6 +7,7 @@ import Pen from "../../../../../assets/pen.svg";
 import { BookingsContext } from "../../../../../providers/bookings";
 import { eachDayOfInterval } from "date-fns";
 import { MandatoryFieldSymbol } from "../../../../../components/MandatoryFieldSymbol";
+import { isCreating } from "../../../../../utils";
 
 type BookingDateField = FC<{
   booking: Booking;
@@ -56,7 +57,7 @@ export const BookingDateField: BookingDateField = ({ booking, onChange }) => {
           />
         </div>
 
-        {booking.id === 0 ? null : (
+        {isCreating(booking.status) ? null : (
           <img
             src={Pen}
             alt="Edit Check in and Check out dates"
