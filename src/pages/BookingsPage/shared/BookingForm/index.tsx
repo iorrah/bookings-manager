@@ -61,8 +61,8 @@ export const BookingForm: BookingForm = ({
         <div className="flex cursor-pointer gap-2">
           <div className="border border-slate-300">
             <DatePickerRange
-              startDate={new Date(booking.checkIn)}
-              endDate={new Date(booking.checkOut)}
+              defaultStartDate={new Date(booking.checkIn)}
+              defaultEndDate={new Date(booking.checkOut)}
               onChange={onDateChange}
             />
           </div>
