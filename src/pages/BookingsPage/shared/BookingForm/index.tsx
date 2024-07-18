@@ -85,18 +85,7 @@ export const BookingForm: BookingForm = ({
         visible={creating}
       />
 
-      {/* TODO: implement discard functionality */}
-
       <div className="flex justify-center px-2 py-8 gap-3">
-        {creating ? null : (
-          <button
-            type="submit"
-            className="bg-slate-100 hover:bg-slate-200 px-5 py-2.5 text-sm leading-5 rounded-sm font-semibold text-neutral-500 border border-slate-300 shadow-sm"
-          >
-            Discard Changes
-          </button>
-        )}
-
         {/* TODO: create button components */}
 
         <button
