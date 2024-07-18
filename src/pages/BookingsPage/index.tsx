@@ -5,7 +5,7 @@ import { Booking } from "../../types";
 
 import { EmptyState } from "./EmptyState";
 import { BookingsList } from "./BookingsList";
-import { BookingDetails } from "./BookingDetails";
+import { BookingEditor } from "./BookingEditor";
 import { BookingCreator } from "./BookingCreator";
 
 export const BookingsPage = () => {
@@ -118,7 +118,7 @@ export const BookingsPage = () => {
         ) : null}
 
         {!newBooking && existingBooking ? (
-          <BookingDetails
+          <BookingEditor
             booking={existingBooking}
             onClose={handleCloseBooking}
             onDelete={handleNextBooking}
