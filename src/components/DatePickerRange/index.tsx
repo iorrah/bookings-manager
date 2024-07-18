@@ -8,6 +8,7 @@ type DatePickerRangeType = FC<{
   defaultStartDate: Date;
   defaultEndDate: Date;
   excludedDates: Date[];
+  disabled: boolean;
   onChange: (update: [Date, Date]) => void;
 }>;
 
@@ -15,11 +16,11 @@ export const DatePickerRange: DatePickerRangeType = ({
   defaultStartDate,
   defaultEndDate,
   excludedDates,
+  disabled,
   onChange
 }) => {
   // TODO:
-  // 1. Define excluded dates based on other bookings
-  // 2. Amend styling to match brand theme
+  // 1. Amend styling to match brand theme
 
   const [startDate, setStartDate] = useState<Date | null>(defaultStartDate);
   const [endDate, setEndDate] = useState<Date | null>(defaultEndDate);
@@ -77,7 +78,8 @@ export const DatePickerRange: DatePickerRangeType = ({
       maxDate={maxDateDatepicker || undefined}
       withPortal
       monthsShown={3}
-      dateFormat="dd/MM/yyyy"
+      dateFormat="d MMM yy"
+      disabled={disabled}
       selectsRange
     />
   );

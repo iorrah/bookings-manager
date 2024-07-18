@@ -36,8 +36,6 @@ export const BookingDateField: BookingDateField = ({ booking, onChange }) => {
     bookedDates.forEach(bookedDate => excludedDates.push(bookedDate));
   });
 
-  console.log({ excludedDates });
-
   return (
     <div className="flex justify-between p-2">
       <p>
@@ -45,21 +43,27 @@ export const BookingDateField: BookingDateField = ({ booking, onChange }) => {
       </p>
 
       <div className="flex cursor-pointer gap-2">
-        <div className="border border-slate-300">
+        <div
+          title={booking.propertyId ? "" : "Please select a property first"}
+          className="border border-slate-300"
+        >
           <DatePickerRange
             defaultStartDate={new Date(booking.checkIn)}
             defaultEndDate={new Date(booking.checkOut)}
             excludedDates={excludedDates}
+            disabled={!booking.propertyId}
             onChange={onChange}
           />
         </div>
 
-        <img
-          src={Pen}
-          alt="Edit Check in and Check out dates"
-          title="Edit Check in and Check out dates"
-          className="w-3"
-        />
+        {booking.id === 0 ? null : (
+          <img
+            src={Pen}
+            alt="Edit Check in and Check out dates"
+            title="Edit Check in and Check out dates"
+            className="w-3"
+          />
+        )}
       </div>
     </div>
   );

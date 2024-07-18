@@ -53,7 +53,9 @@ export const BookingForm: BookingForm = ({
         type="tel"
         visible={isCreating}
       />
+
       <BookingDateField booking={booking} onChange={onDateChange} />
+
       <BookingField
         id={booking.id}
         title="Adults Quantity"
