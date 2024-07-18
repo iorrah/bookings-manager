@@ -43,6 +43,13 @@ export const BookingCreator: BookingCreatorType = ({
     });
   };
 
+  const handlePropertyChange = (propertyId: number) => {
+    setDraftBooking({
+      ...draftBooking,
+      propertyId
+    });
+  };
+
   const handleSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
     createBooking(draftBooking);
@@ -63,10 +70,9 @@ export const BookingCreator: BookingCreatorType = ({
 
       <div className="p-8 pb-10">
         <div className="flex justify-between mb-6">
-          {/* TODO: implement event handler */}
           <BookingSelectField
             defaultPropertyId={booking.propertyId}
-            onchange={() => {}}
+            onchange={handlePropertyChange}
           />
         </div>
 
