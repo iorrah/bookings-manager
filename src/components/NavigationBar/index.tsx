@@ -12,7 +12,7 @@ export const NavigationBar = () => {
         />
 
         <p className="flex items-center">
-          <span className="mr-1.5 font-semibold text-lg">Bookings Page</span>
+          <span className="mr-1.5 font-semibold">Bookings Page</span>
         </p>
 
         <img

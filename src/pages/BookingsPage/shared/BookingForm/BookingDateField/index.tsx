@@ -1,4 +1,4 @@
-import { FC, useContext } from "react";
+import { FC, useContext, useState } from "react";
 
 // TODO: use absolute paths
 import { Booking } from "../../../../../types";
@@ -16,6 +16,10 @@ type BookingDateField = FC<{
 
 export const BookingDateField: BookingDateField = ({ booking, onChange }) => {
   const { bookings } = useContext(BookingsContext);
+
+  const [isIconVisible, setIsIconVisible] = useState(
+    !isCreating(booking.status)
+  );
 
   let excludedDates: Date[] = [];
 
@@ -37,6 +41,8 @@ export const BookingDateField: BookingDateField = ({ booking, onChange }) => {
     bookedDates.forEach(bookedDate => excludedDates.push(bookedDate));
   });
 
+  const handleIconClick = () => setIsIconVisible(false);
+
   return (
     <div className="flex justify-between p-2">
       <p>
@@ -57,14 +63,15 @@ export const BookingDateField: BookingDateField = ({ booking, onChange }) => {
           />
         </div>
 
-        {isCreating(booking.status) ? null : (
+        {isIconVisible ? (
           <img
             src={Pen}
             alt="Edit Check in and Check out dates"
             title="Edit Check in and Check out dates"
             className="w-3"
+            onClick={handleIconClick}
           />
-        )}
+        ) : null}
       </div>
     </div>
   );
