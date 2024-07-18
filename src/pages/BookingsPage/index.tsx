@@ -6,7 +6,7 @@ import { Booking } from "../../types";
 import { EmptyState } from "./EmptyState";
 import { BookingsList } from "./BookingsList";
 import { BookingDetails } from "./BookingDetails";
-import { BookingCreatorDetails } from "./BookingCreatorDetails";
+import { BookingCreator } from "./BookingCreator";
 
 export const BookingsPage = () => {
   const [bookingId, setBookingId] = useState<number | null>(null);
@@ -110,7 +110,7 @@ export const BookingsPage = () => {
 
       <article className="col-span-9">
         {newBooking ? (
-          <BookingCreatorDetails
+          <BookingCreator
             booking={newBooking}
             onDiscard={handleDiscard}
             onResetBookingCreation={handleBookingCreationReset}
