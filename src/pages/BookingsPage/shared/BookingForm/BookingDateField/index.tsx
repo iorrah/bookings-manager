@@ -6,6 +6,7 @@ import { DatePickerRange } from "../../../../../components/DatePickerRange";
 import Pen from "../../../../../assets/pen.svg";
 import { BookingsContext } from "../../../../../providers/bookings";
 import { eachDayOfInterval } from "date-fns";
+import { MandatoryFieldSymbol } from "../../../../../components/MandatoryFieldSymbol";
 
 type BookingDateField = FC<{
   booking: Booking;
@@ -39,7 +40,9 @@ export const BookingDateField: BookingDateField = ({ booking, onChange }) => {
 
   return (
     <div className="flex justify-between p-2">
-      <p>Check in/out</p>
+      <p>
+        Check in/out <MandatoryFieldSymbol />
+      </p>
 
       <div className="flex cursor-pointer gap-2">
         <div className="border border-slate-300">

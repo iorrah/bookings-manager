@@ -1,6 +1,7 @@
 import { FC, useContext, useState } from "react";
 
 import { PropertiesContext } from "../../../../providers/properties";
+import { MandatoryFieldSymbol } from "../../../../components/MandatoryFieldSymbol";
 
 // TODO: property guest limit and image
 
@@ -25,8 +26,11 @@ export const BookingSelectField: BookingSelectFieldType = ({
   };
 
   return (
-    <p className="flex gap-3">
-      Property Name:
+    <p className="flex">
+      <span className="mr-3">
+        Property Name <MandatoryFieldSymbol />
+      </span>
+
       <span className="border border-slate-300">
         <select autoFocus value={propertyId} onChange={handleChange}>
           <option value="0">Please select a property</option>

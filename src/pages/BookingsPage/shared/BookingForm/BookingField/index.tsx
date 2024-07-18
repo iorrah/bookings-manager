@@ -1,6 +1,7 @@
 import { FC, useEffect, useState } from "react";
 
 import Pen from "../../../../../assets/pen.svg";
+import { MandatoryFieldSymbol } from "../../../../../components/MandatoryFieldSymbol";
 
 type BookingField = FC<{
   id: number;
@@ -37,7 +38,9 @@ export const BookingField: BookingField = ({
 
   return (
     <div className="flex justify-between p-2">
-      <p>{title}</p>
+      <p>
+        {title} {required ? <MandatoryFieldSymbol /> : null}
+      </p>
 
       {visible || editing ? (
         <input
