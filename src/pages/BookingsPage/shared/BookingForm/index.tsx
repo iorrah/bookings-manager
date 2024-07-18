@@ -2,17 +2,23 @@ import { FC } from "react";
 
 // TODO: use absolute paths
 import { Booking } from "../../../../types";
-import { fullDate } from "../../../../utils/";
+import { DatePickerRange } from "../../../../components/DatePickerRange";
 
 import { BookingField } from "./BookingField";
 
 type BookingForm = FC<{
   booking: Booking;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onDateChange: (update: [Date, Date]) => void;
   onSubmit: (event: React.ChangeEvent<HTMLFormElement>) => void;
 }>;
 
-export const BookingForm: BookingForm = ({ booking, onChange, onSubmit }) => {
+export const BookingForm: BookingForm = ({
+  booking,
+  onChange,
+  onDateChange,
+  onSubmit
+}) => {
   const isCreating = booking.id === 0;
 
   return (
@@ -50,9 +56,12 @@ export const BookingForm: BookingForm = ({ booking, onChange, onSubmit }) => {
       />
       <div className="flex justify-between p-2">
         <p>Check in/out</p>
-        <p>
-          {fullDate(booking.checkIn)} - {fullDate(booking.checkOut)}
-        </p>
+
+        <DatePickerRange
+          startDate={new Date(booking.checkIn)}
+          endDate={new Date(booking.checkOut)}
+          onChange={onDateChange}
+        />
       </div>
       <BookingField
         id={booking.id}

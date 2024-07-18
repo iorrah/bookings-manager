@@ -98,6 +98,8 @@ export const BookingsPage = () => {
 
   return (
     <main className="container mx-auto flex py-10 grid grid-cols-12 gap-4">
+      {/* TODO: present list and page in separate states on Mobile Viewport  */}
+
       <aside className="col-span-3">
         <BookingsList
           onSelectBooking={handleBookingSelection}

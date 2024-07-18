@@ -26,6 +26,19 @@ export const BookingCreator: BookingCreatorType = ({
     });
   };
 
+  const handleDateChange = (update: [Date, Date]) => {
+    const [checkIn, checkOut] = update;
+
+    const checkInToString = checkIn.toISOString();
+    const checkOutToString = checkOut.toISOString();
+
+    setDraftBooking({
+      ...draftBooking,
+      checkIn: checkInToString,
+      checkOut: checkOutToString
+    });
+  };
+
   const handleSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
     createBooking(draftBooking);
@@ -42,6 +55,7 @@ export const BookingCreator: BookingCreatorType = ({
         <BookingForm
           booking={draftBooking}
           onChange={handleChange}
+          onDateChange={handleDateChange}
           onSubmit={handleSubmit}
         />
       </div>

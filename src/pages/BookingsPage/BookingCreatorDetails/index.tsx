@@ -25,9 +25,8 @@ export const BookingCreatorDetails: BookingCreatorDetailsType = ({
 
       <div className="pt-2 px-2 pb-10">
         <div className="flex justify-between mb-6">
-          <div>
-            <p>Property Name: (select dropdown)</p>
-          </div>
+          {/* TODO: implement dropdown */}
+          <p>Property Name: (select dropdown)</p>
         </div>
 
         <BookingCreator

@@ -20,9 +20,24 @@ export const BookingEditor: BookingEditorType = ({ booking }) => {
     });
   };
 
+  const handleDateChange = (update: [Date, Date]) => {
+    const [checkIn, checkOut] = update;
+
+    const checkInToString = checkIn.toISOString();
+    const checkOutToString = checkOut.toISOString();
+
+    setDraftBooking({
+      ...draftBooking,
+      checkIn: checkInToString,
+      checkOut: checkOutToString
+    });
+  };
+
   const handleSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
     updateBooking(draftBooking);
+
+    // TODO: show toaster confirming change
   };
 
   useEffect(() => {
@@ -35,6 +50,7 @@ export const BookingEditor: BookingEditorType = ({ booking }) => {
         <BookingForm
           booking={draftBooking}
           onChange={handleChange}
+          onDateChange={handleDateChange}
           onSubmit={handleSubmit}
         />
       </div>
