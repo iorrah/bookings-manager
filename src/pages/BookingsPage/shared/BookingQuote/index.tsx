@@ -33,17 +33,34 @@ export const BookingQuote: BookingQuoteType = ({ booking }) => {
       <div className="border-b p-2 font-semibold">Quote</div>
 
       <div className="flex justify-between p-2">
-        <p>Property Rate</p>
+        <p>
+          Property Rate
+          <span className="block text-gray-500 text-xs">
+            Price per Night: {format(pricePerNight)} x {bookingDaysQuantity} Day
+            {bookingDaysQuantity > 1 ? "s" : ""}
+          </span>
+        </p>
+
         <p>{format(pricePerBooking)}</p>
       </div>
 
       <div className="flex justify-between p-2">
-        <p>Cleaning Fee</p>
+        <p>
+          Cleaning Fee
+          <span className="block text-gray-500 text-xs">
+            Fixed Rate per Property
+          </span>
+        </p>
         <p>{format(cleaningFee)}</p>
       </div>
 
       <div className="flex justify-between p-2 mt-10">
-        <p className="font-semibold">Total</p>
+        <p className="font-semibold">
+          Total
+          <span className="block text-gray-500 text-xs font-normal">
+            The total price includes VAT
+          </span>
+        </p>
         <p className="font-semibold">{format(total)}</p>
       </div>
     </>

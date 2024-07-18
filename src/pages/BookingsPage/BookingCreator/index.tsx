@@ -77,7 +77,7 @@ export const BookingCreator: BookingCreatorType = ({
         </div>
 
         <div className="grid grid-cols-12 gap-4">
-          <div className="col-span-6 border">
+          <div className="col-span-6 border rounded-md">
             <BookingForm
               booking={draftBooking}
               onChange={handleChange}
@@ -86,7 +86,7 @@ export const BookingCreator: BookingCreatorType = ({
             />
           </div>
 
-          <div className="col-span-6 border">
+          <div className="col-span-6 border rounded-md">
             <BookingQuote booking={draftBooking} />
           </div>
         </div>
