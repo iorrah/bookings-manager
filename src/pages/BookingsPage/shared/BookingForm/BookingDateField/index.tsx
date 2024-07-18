@@ -1,9 +1,11 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
 
 // TODO: use absolute paths
 import { Booking } from "../../../../../types";
 import { DatePickerRange } from "../../../../../components/DatePickerRange";
 import Pen from "../../../../../assets/pen.svg";
+import { BookingsContext } from "../../../../../providers/bookings";
+import { eachDayOfInterval } from "date-fns";
 
 type BookingDateField = FC<{
   booking: Booking;
@@ -11,6 +13,28 @@ type BookingDateField = FC<{
 }>;
 
 export const BookingDateField: BookingDateField = ({ booking, onChange }) => {
+  const { bookings } = useContext(BookingsContext);
+
+  let excludedDates: Date[] = [];
+
+  const sharedPropertyBookings = bookings.filter(
+    ({ id, propertyId }: Booking) =>
+      id !== booking.id && propertyId === booking.propertyId
+  );
+
+  const bookingsInterval = sharedPropertyBookings.map(
+    ({ checkIn, checkOut }) => [checkIn, checkOut]
+  );
+
+  bookingsInterval.forEach(([checkIn, checkOut]) => {
+    const bookedDates = eachDayOfInterval({
+      start: new Date(checkIn),
+      end: new Date(checkOut)
+    });
+
+    bookedDates.forEach(bookedDate => excludedDates.push(bookedDate));
+  });
+
   return (
     <div className="flex justify-between p-2">
       <p>Check in/out</p>
@@ -20,6 +44,7 @@ export const BookingDateField: BookingDateField = ({ booking, onChange }) => {
           <DatePickerRange
             defaultStartDate={new Date(booking.checkIn)}
             defaultEndDate={new Date(booking.checkOut)}
+            excludedDates={excludedDates}
             onChange={onChange}
           />
         </div>
