@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from "react";
 
-import Pen from "./pen.svg";
+import Pen from "../../../../../assets/pen.svg";
 
 type BookingField = FC<{
   id: number;
@@ -53,7 +53,13 @@ export const BookingField: BookingField = ({
       ) : (
         <p className="flex cursor-pointer" onClick={handleClick}>
           <label className="mr-2 block cursor-pointer">{value}</label>
-          <img src={Pen} alt="Pen Icon" className="w-3" />
+
+          <img
+            src={Pen}
+            alt={`Edit ${field}`}
+            title={`Edit ${field}`}
+            className="w-3"
+          />
         </p>
       )}
     </div>

@@ -3,6 +3,7 @@ import { FC } from "react";
 // TODO: use absolute paths
 import { Booking } from "../../../../types";
 import { DatePickerRange } from "../../../../components/DatePickerRange";
+import Pen from "../../../../assets/pen.svg";
 
 import { BookingField } from "./BookingField";
 
@@ -57,11 +58,22 @@ export const BookingForm: BookingForm = ({
       <div className="flex justify-between p-2">
         <p>Check in/out</p>
 
-        <DatePickerRange
-          startDate={new Date(booking.checkIn)}
-          endDate={new Date(booking.checkOut)}
-          onChange={onDateChange}
-        />
+        <div className="flex cursor-pointer gap-2">
+          <div className="border border-slate-300">
+            <DatePickerRange
+              startDate={new Date(booking.checkIn)}
+              endDate={new Date(booking.checkOut)}
+              onChange={onDateChange}
+            />
+          </div>
+
+          <img
+            src={Pen}
+            alt="Edit check in and check out"
+            title="Edit check in and check out"
+            className="w-3"
+          />
+        </div>
       </div>
       <BookingField
         id={booking.id}

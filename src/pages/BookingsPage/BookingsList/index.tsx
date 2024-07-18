@@ -18,7 +18,7 @@ export const BookingsList: BookingsListType = ({
     <div>
       {bookings.map(booking => (
         <button
-          className="text-left border block p-2 w-full mb-4"
+          className="text-left border block py-4 px-6 w-full mb-4"
           onClick={() => onSelectBooking(booking.id)}
           key={booking.id}
         >
@@ -26,11 +26,11 @@ export const BookingsList: BookingsListType = ({
             <div>
               <p className="font-semibold">{booking.guestName}</p>
 
-              <p>
+              <p className="text-sm">
                 {fullDate(booking.checkIn)} - {fullDate(booking.checkOut)}
               </p>
 
-              <p className="text-slate-500">
+              <p className="text-slate-500 text-sm">
                 {Number(booking.adultsAmount) + Number(booking.childrenAmount)}{" "}
                 guests
               </p>
@@ -40,7 +40,7 @@ export const BookingsList: BookingsListType = ({
               {booking.status === 1 ? (
                 <>
                   <div className="flex-none rounded-full bg-emerald-500/20 p-1">
-                    <div className="h-1.5 w-1.5 rounded-full bg-emerald-500"></div>
+                    <div className="h-2 w-2 rounded-full bg-emerald-500"></div>
                   </div>
 
                   <p className="text-xs leading-5 text-gray-500">

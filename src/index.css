@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+input[type="text"], input[type="number"], input[type="email"], input[type="tel"] {
+  width: 190px;
+}
