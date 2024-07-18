@@ -6,14 +6,14 @@ import { PropertiesContextProvider } from "./providers/properties";
 // TODO: create a wrapper layout component
 
 const App = () => (
-  <>
-    <PropertiesContextProvider>
-      <BookingsContextProvider>
+  <PropertiesContextProvider>
+    <BookingsContextProvider>
+      <main className="bg-slate-50">
         <NavigationBar />
         <BookingsPage />
-      </BookingsContextProvider>
-    </PropertiesContextProvider>
-  </>
+      </main>
+    </BookingsContextProvider>
+  </PropertiesContextProvider>
 );
 
 export default App;

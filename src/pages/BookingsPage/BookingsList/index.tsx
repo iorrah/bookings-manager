@@ -18,7 +18,7 @@ export const BookingsList: BookingsListType = ({
     <div>
       {bookings.map(booking => (
         <button
-          className="text-left border block py-4 px-6 w-full mb-4"
+          className="text-left border block py-4 px-6 w-full mb-4 bg-white"
           onClick={() => onSelectBooking(booking.id)}
           key={booking.id}
         >

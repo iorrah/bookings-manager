@@ -97,7 +97,7 @@ export const BookingsPage = () => {
   }, [bookingId, bookings]);
 
   return (
-    <main className="container mx-auto flex py-10 grid grid-cols-12 gap-4">
+    <div className="container mx-auto flex py-10 grid grid-cols-12 gap-4">
       {/* TODO: present list and page in separate states on Mobile Viewport  */}
 
       <aside className="col-span-3">
@@ -107,7 +107,7 @@ export const BookingsPage = () => {
         />
       </aside>
 
-      <article className="col-span-9">
+      <article className="col-span-9 bg-white">
         {newBooking ? (
           <BookingCreatorDetails
             booking={newBooking}
@@ -126,6 +126,6 @@ export const BookingsPage = () => {
 
         {!newBooking && !existingBooking ? <EmptyState /> : null}
       </article>
-    </main>
+    </div>
   );
 };

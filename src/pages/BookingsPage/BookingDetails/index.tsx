@@ -22,8 +22,8 @@ export const BookingDetails: BookingDetailsType = ({
   const property = findProperty(booking.propertyId);
 
   return (
-    <div className="border">
-      <div className="flex justify-between border-b p-2 mb-8">
+    <div className="rounded-lg shadow-lg">
+      <div className="flex justify-between border-b px-8 py-4 mb-2">
         <p>
           Booking Reference:{" "}
           <span className="text-slate-700 text-sm	">#{booking.id}</span>
@@ -32,7 +32,7 @@ export const BookingDetails: BookingDetailsType = ({
         <button onClick={onClose}>Close</button>
       </div>
 
-      <div className="pt-2 px-2 pb-10">
+      <div className="p-8 pb-10">
         <div className="flex justify-between items-center mb-6">
           <div>
             <p className="text-lg	font-semibold">{booking.guestName}</p>
