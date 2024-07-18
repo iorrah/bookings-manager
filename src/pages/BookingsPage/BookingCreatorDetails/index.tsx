@@ -3,6 +3,7 @@ import { FC } from "react";
 import { Booking } from "../../../types";
 
 import { BookingCreator } from "./BookingCreator";
+import { BookingSelectField } from "./BookingSelectField";
 
 type BookingCreatorDetailsType = FC<{
   booking: Booking;
@@ -25,8 +26,11 @@ export const BookingCreatorDetails: BookingCreatorDetailsType = ({
 
       <div className="p-8 pb-10">
         <div className="flex justify-between mb-6">
-          {/* TODO: implement dropdown */}
-          <p>Property Name: (select dropdown)</p>
+          {/* TODO: implement event handler */}
+          <BookingSelectField
+            defaultPropertyId={booking.propertyId}
+            onchange={() => {}}
+          />
         </div>
 
         <BookingCreator

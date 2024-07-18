@@ -35,6 +35,8 @@ export const BookingDateField: BookingDateField = ({ booking, onChange }) => {
     bookedDates.forEach(bookedDate => excludedDates.push(bookedDate));
   });
 
+  console.log({ excludedDates });
+
   return (
     <div className="flex justify-between p-2">
       <p>Check in/out</p>

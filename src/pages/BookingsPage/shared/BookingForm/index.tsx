@@ -32,7 +32,6 @@ export const BookingForm: BookingForm = ({
         onChange={onChange}
         required
         visible={isCreating}
-        autoFocus
       />
       <BookingField
         id={booking.id}
