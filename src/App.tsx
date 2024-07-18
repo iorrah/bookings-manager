@@ -8,7 +8,7 @@ import { PropertiesContextProvider } from "./providers/properties";
 const App = () => (
   <PropertiesContextProvider>
     <BookingsContextProvider>
-      <main className="bg-slate-50">
+      <main className="bg-slate-50 min-h-screen">
         <NavigationBar />
         <BookingsPage />
       </main>

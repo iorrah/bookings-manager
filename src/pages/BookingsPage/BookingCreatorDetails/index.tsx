@@ -16,8 +16,8 @@ export const BookingCreatorDetails: BookingCreatorDetailsType = ({
   onResetBookingCreation
 }) => {
   return (
-    <div className="rounded-lg shadow-lg">
-      <div className="flex justify-between border-b px-8 py-4 mb-2">
+    <div className="rounded-lg shadow-lg bg-white">
+      <div className="flex justify-between border-b px-8 py-4 mb-2 bg-slate-100">
         <p>New Booking (not saved)</p>
 
         <button onClick={onDiscard}>Discard Booking</button>

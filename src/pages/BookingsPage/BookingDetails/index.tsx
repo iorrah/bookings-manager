@@ -22,8 +22,8 @@ export const BookingDetails: BookingDetailsType = ({
   const property = findProperty(booking.propertyId);
 
   return (
-    <div className="rounded-lg shadow-lg">
-      <div className="flex justify-between border-b px-8 py-4 mb-2">
+    <div className="rounded-lg shadow-lg bg-white">
+      <div className="flex justify-between border-b px-8 py-4 mb-2 bg-slate-100">
         <p>
           Booking Reference:{" "}
           <span className="text-slate-700 text-sm	">#{booking.id}</span>
@@ -45,7 +45,7 @@ export const BookingDetails: BookingDetailsType = ({
 
           <button
             type="submit"
-            className="bg-white hover:bg-slate-50 px-5 py-2.5 text-sm leading-5 rounded-sm font-semibold text-rose-700 border border-slate-300"
+            className="bg-slate-100 hover:bg-slate-200 px-5 py-2.5 text-sm leading-5 rounded-sm font-semibold text-rose-700 border border-slate-300 shadow-sm"
             onClick={() => onDelete(booking.id)}
           >
             Delete Booking

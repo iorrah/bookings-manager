@@ -102,12 +102,13 @@ export const BookingsPage = () => {
 
       <aside className="col-span-3">
         <BookingsList
+          selectedBookingId={bookingId || newBooking?.id}
           onSelectBooking={handleBookingSelection}
           onCreateBooking={handleStartBookingCreation}
         />
       </aside>
 
-      <article className="col-span-9 bg-white">
+      <article className="col-span-9">
         {newBooking ? (
           <BookingCreatorDetails
             booking={newBooking}
