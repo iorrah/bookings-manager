@@ -3,6 +3,8 @@ import { BookingsPage } from "./pages/BookingsPage";
 import { BookingsContextProvider } from "./providers/bookings";
 import { PropertiesContextProvider } from "./providers/properties";
 
+// TODO: create a wrapper layout component
+
 const App = () => (
   <>
     <PropertiesContextProvider>

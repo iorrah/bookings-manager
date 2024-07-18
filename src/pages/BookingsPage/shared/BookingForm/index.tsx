@@ -69,8 +69,8 @@ export const BookingForm: BookingForm = ({
 
           <img
             src={Pen}
-            alt="Edit check in and check out"
-            title="Edit check in and check out"
+            alt="Edit Check in and Check out dates"
+            title="Edit Check in and Check out dates"
             className="w-3"
           />
         </div>

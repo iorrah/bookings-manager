@@ -56,8 +56,8 @@ export const BookingField: BookingField = ({
 
           <img
             src={Pen}
-            alt={`Edit ${field}`}
-            title={`Edit ${field}`}
+            alt={`Edit ${title}`}
+            title={`Edit ${title}`}
             className="w-3"
           />
         </p>
