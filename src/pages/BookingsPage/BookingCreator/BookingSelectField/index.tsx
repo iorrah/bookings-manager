@@ -3,7 +3,7 @@ import { FC, useContext, useState } from "react";
 import { PropertiesContext } from "../../../../providers/properties";
 import { MandatoryFieldSymbol } from "../../../../components/MandatoryFieldSymbol";
 
-// TODO: property guest limit and image
+// TODO: display property image
 
 type BookingSelectFieldType = FC<{
   defaultPropertyId: number;

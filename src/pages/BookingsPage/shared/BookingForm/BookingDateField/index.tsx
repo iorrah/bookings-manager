@@ -1,11 +1,10 @@
 import { FC, useContext, useState } from "react";
+import { eachDayOfInterval } from "date-fns";
 
-// TODO: use absolute paths
 import { Booking } from "../../../../../types";
 import { DatePickerRange } from "../../../../../components/DatePickerRange";
 import Pen from "../../../../../assets/pen.svg";
 import { BookingsContext } from "../../../../../providers/bookings";
-import { eachDayOfInterval } from "date-fns";
 import { MandatoryFieldSymbol } from "../../../../../components/MandatoryFieldSymbol";
 import { isCreating } from "../../../../../utils";
 

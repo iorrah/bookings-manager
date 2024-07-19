@@ -1,11 +1,12 @@
 import { FC } from "react";
 
 // TODO: use absolute paths
-import { Booking } from "../../../../types";
 
 import { BookingField } from "./BookingField";
 import { BookingDateField } from "./BookingDateField";
+
 import { isCreating } from "../../../../utils";
+import { Booking } from "../../../../types";
 
 type BookingForm = FC<{
   booking: Booking;

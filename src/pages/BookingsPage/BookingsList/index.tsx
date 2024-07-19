@@ -70,7 +70,7 @@ export const BookingsList: BookingsListType = ({
         })}
       </div>
 
-      <div className="fixed sm:static bottom-4 left-4 right-4 sm:bottom sm:left sm:right bg-white sm:bg-transparent pt-4 sm:pt-0">
+      <div className="fixed sm:static bottom-4 left-4 right-4 sm:bottom sm:left sm:right bg-white sm:bg-transparent sm:pt-0">
         <button
           className={`bg-slate-100 hover:bg-slate-200 px-5 py-4 text-sm leading-5 rounded-lg font-semibold text-blue-600 border border-slate-300 shadow-sm w-full ${
             selectedBookingId === 0 ? ringSyle : ""

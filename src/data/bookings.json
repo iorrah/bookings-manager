@@ -68,5 +68,33 @@
     "guestPhoneNumber": "+582937845",
     "status": 1,
     "createdAt": "2024-05-03T00:00:00.000Z"
+  },
+  {
+    "id": 102843899,
+    "propertyId": 5333155449,
+    "checkIn": "2025-03-20T00:00:00.000Z",
+    "checkOut": "2025-03-23T00:00:00.000Z",
+    "adultsAmount": 3,
+    "childrenAmount": 1,
+    "note": "",
+    "guestName": "Mary Rocket",
+    "guestEmail": "mary.rockar@email.com",
+    "guestPhoneNumber": "+999445344",
+    "status": 1,
+    "createdAt": "2024-05-03T00:00:00.000Z"
+  },
+  {
+    "id": 552743812,
+    "propertyId": 3343556740,
+    "checkIn": "2025-04-24T00:00:00.000Z",
+    "checkOut": "2025-04-25T00:00:00.000Z",
+    "adultsAmount": 1,
+    "childrenAmount": 1,
+    "note": "",
+    "guestName": "Brian McLee",
+    "guestEmail": "brian.mclee@email.com",
+    "guestPhoneNumber": "+749455344",
+    "status": 1,
+    "createdAt": "2024-05-03T00:00:00.000Z"
   }
 ]
