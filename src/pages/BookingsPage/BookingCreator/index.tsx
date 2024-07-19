@@ -4,6 +4,7 @@ import { BookingForm } from "../shared/BookingForm";
 import { BookingQuote } from "../shared/BookingQuote";
 import { BookingsContext } from "../../../providers/bookings";
 import { Booking, Property } from "../../../types";
+import { validateBooking } from "../../../utils";
 
 import { BookingSelectField } from "./BookingSelectField";
 import { PropertiesContext } from "../../../providers/properties";
@@ -57,34 +58,10 @@ export const BookingCreator: BookingCreatorType = ({
     });
   };
 
-  const validateBooking = (booking: Booking) => {
-    let messages = [];
-
-    if (booking.adultsAmount < 1) {
-      messages.push("Invalid adults amount");
-    }
-
-    if ((booking.childrenAmount || 0) < 0) {
-      messages.push("Invalid children amount");
-    }
-
-    if (
-      property &&
-      booking.adultsAmount + (booking.childrenAmount || 0) >
-        property?.guestsLimit
-    ) {
-      messages.push(
-        `The guest limit for this property is ${property?.guestsLimit} people`
-      );
-    }
-
-    return messages;
-  };
-
   const handleSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const validationMessages = validateBooking(draftBooking);
+    const validationMessages = validateBooking(draftBooking, property);
 
     if (validationMessages.length === 0) {
       createBooking(draftBooking);

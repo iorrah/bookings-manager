@@ -5,7 +5,7 @@ import { BookingForm } from "../shared/BookingForm";
 import { BookingQuote } from "../shared/BookingQuote";
 import { Booking } from "../../../types";
 import { PropertiesContext } from "../../../providers/properties";
-import { fullDate } from "../../../utils";
+import { fullDate, validateBooking } from "../../../utils";
 
 type BookingEditorType = FC<{
   booking: Booking;
@@ -26,12 +26,14 @@ export const BookingEditor: BookingEditorType = ({
   const property = findProperty(booking.propertyId);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
+    let { name, value } = event.target;
 
-    setDraftBooking({
-      ...draftBooking,
-      [name]: value
-    });
+    if (name === "adultsAmount" || name === "childrenAmount") {
+      setDraftBooking({ ...draftBooking, [name]: parseInt(value, 10) || 0 });
+      return;
+    }
+
+    setDraftBooking({ ...draftBooking, [name]: value });
   };
 
   const handleDateChange = (update: [Date, Date]) => {
@@ -49,7 +51,15 @@ export const BookingEditor: BookingEditorType = ({
 
   const handleSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
-    updateBooking(draftBooking);
+
+    const validationMessages = validateBooking(draftBooking, property);
+
+    if (validationMessages.length === 0) {
+      updateBooking(draftBooking);
+      setErrorMessages([]);
+    } else {
+      setErrorMessages(validationMessages);
+    }
 
     // TODO: show toaster confirming change
   };
@@ -75,7 +85,7 @@ export const BookingEditor: BookingEditorType = ({
             <p className="text-lg	font-semibold">{booking.guestName}</p>
 
             <p>
-              {property?.title}{" "}
+              {property?.title} (max {property?.guestsLimit} guests){" "}
               <span className="text-gray-500 text-sm">#{property?.id}</span>
             </p>
 
