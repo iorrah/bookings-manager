@@ -11,9 +11,9 @@ export const NavigationBar = () => (
         className="w-20 sm:w-24 cursor-pointer"
       />
 
-      <p className="hidden sm:flex items-center">
-        <span className="font-semibold text-sm sm:text-base">
-          Bookings Page
+      <p className="flex items-center">
+        <span className="font-semibold text-sm sm:text-base mr-8">
+          Bookings
         </span>
       </p>
 
