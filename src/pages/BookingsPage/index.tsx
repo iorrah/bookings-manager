@@ -1,5 +1,8 @@
 import { useContext, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
+import { Container } from "../../components/Container";
+import { useBreakpoint } from "../../hooks/useBreakpoint";
 import { BookingsContext } from "../../providers/bookings";
 import { Booking } from "../../types";
 
@@ -7,8 +10,6 @@ import { EmptyState } from "./EmptyState";
 import { BookingsList } from "./BookingsList";
 import { BookingEditor } from "./BookingEditor";
 import { BookingCreator } from "./BookingCreator";
-import { Container } from "../../components/Container";
-import { useBreakpoint } from "../../hooks/useBreakpoint";
 
 export const BookingsPage = () => {
   const [bookingId, setBookingId] = useState<number | null>(null);
@@ -53,6 +54,7 @@ export const BookingsPage = () => {
     }
 
     deleteBooking(bookingId);
+    toast.success("Booking deleted!");
   };
 
   const handleCloseBooking = () => {

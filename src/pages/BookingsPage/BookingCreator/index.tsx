@@ -1,4 +1,5 @@
 import { FC, useContext, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 import { BookingForm } from "../shared/BookingForm";
 import { BookingQuote } from "../shared/BookingQuote";
@@ -68,7 +69,9 @@ export const BookingCreator: BookingCreatorType = ({
       createBooking(draftBooking);
       setErrorMessages([]);
       onResetBookingCreation();
+      toast.success("Booking created!");
     } else {
+      toast.error("Booking not created.");
       setErrorMessages(validationMessages);
     }
   };

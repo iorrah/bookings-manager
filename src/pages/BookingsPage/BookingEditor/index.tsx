@@ -1,4 +1,5 @@
 import { FC, useContext, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 import { BookingsContext } from "../../../providers/bookings";
 import { BookingForm } from "../shared/BookingForm";
@@ -58,11 +59,11 @@ export const BookingEditor: BookingEditorType = ({
     if (validationMessages.length === 0) {
       updateBooking(draftBooking);
       setErrorMessages([]);
+      toast.success("Booking saved!");
     } else {
+      toast.error("Booking not saved.");
       setErrorMessages(validationMessages);
     }
-
-    // TODO: show toaster confirming change
   };
 
   useEffect(() => {

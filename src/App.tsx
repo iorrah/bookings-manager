@@ -1,3 +1,5 @@
+import { Toaster } from "react-hot-toast";
+
 import { NavigationBar } from "./components/NavigationBar";
 import { BookingsPage } from "./pages/BookingsPage";
 import { BookingsContextProvider } from "./providers/bookings";
@@ -10,6 +12,17 @@ const App = () => (
         <NavigationBar />
         <BookingsPage />
       </main>
+
+      <Toaster
+        position="bottom-center"
+        toastOptions={{
+          style: {
+            borderRadius: "10px",
+            background: "#333",
+            color: "#fff"
+          }
+        }}
+      />
     </BookingsContextProvider>
   </PropertiesContextProvider>
 );
