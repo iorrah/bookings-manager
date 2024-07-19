@@ -105,9 +105,7 @@ export const BookingsPage = () => {
       {/* TODO: present list and page in separate states on Mobile Viewport  */}
 
       {(bookingId || newBooking) && breakpoint === "phone" ? null : (
-        <aside
-          className={breakpoint === "phone" ? "col-span-12" : "col-span-3"}
-        >
+        <aside className="col-span-12 sm:col-span-4 lg:col-span-3">
           <BookingsList
             selectedBookingId={bookingId || newBooking?.id}
             onSelectBooking={handleBookingSelection}
@@ -119,9 +117,7 @@ export const BookingsPage = () => {
       {bookingId === null &&
       newBooking === null &&
       breakpoint === "phone" ? null : (
-        <article
-          className={breakpoint === "phone" ? "col-span-12" : "col-span-9"}
-        >
+        <article className="col-span-12 sm:col-span-8 lg:col-span-9">
           {newBooking ? (
             <BookingCreator
               booking={newBooking}

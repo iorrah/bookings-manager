@@ -1,7 +1,7 @@
 import { FC, useContext } from "react";
 
 import { BookingsContext } from "../../../providers/bookings";
-import { formatStatus, fullDate } from "../../../utils";
+import { formatStatus, fullDate, shortDate } from "../../../utils";
 
 type BookingsListType = FC<{
   selectedBookingId: number | null | undefined;
@@ -26,19 +26,25 @@ export const BookingsList: BookingsListType = ({
 
           return (
             <button
-              className={`text-left block py-4 px-6 w-full mb-4 bg-white rounded-lg shadow-lg ${bookingRingStyle}`}
+              className={`text-left block py-3 px-4 lg:py-4 lg:px-6 w-full mb-4 bg-white rounded-lg shadow-lg border sm:border-0 ${bookingRingStyle}`}
               onClick={() => onSelectBooking(booking.id)}
               key={booking.id}
             >
               <div className="flex justify-between items-center">
                 <div>
-                  <p className="font-semibold">{booking.guestName}</p>
+                  <p className="font-semibold text-sm lg:text-base">
+                    {booking.guestName}
+                  </p>
 
-                  <p className="text-sm">
+                  <p className="text-sm hidden lg:block">
                     {fullDate(booking.checkIn)} - {fullDate(booking.checkOut)}
                   </p>
 
-                  <p className="text-slate-500 text-sm">
+                  <p className="text-xs lg:hidden">
+                    {shortDate(booking.checkIn)} - {shortDate(booking.checkOut)}
+                  </p>
+
+                  <p className="text-slate-500 text-xs lg:text-sm">
                     {Number(booking.adultsAmount) +
                       Number(booking.childrenAmount)}{" "}
                     guests
@@ -52,7 +58,7 @@ export const BookingsList: BookingsListType = ({
                         <div className="h-2 w-2 rounded-full bg-emerald-500"></div>
                       </div>
 
-                      <p className="text-xs leading-5 text-gray-500">
+                      <p className="text-xs leading-5 text-gray-500 hidden lg:block">
                         {formatStatus(booking.status)}
                       </p>
                     </>

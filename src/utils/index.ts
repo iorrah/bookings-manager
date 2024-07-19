@@ -5,6 +5,8 @@ import { statusName } from "../constants";
 
 export const fullDate = (date: string) => format(new Date(date), "E, d MMM yy");
 
+export const shortDate = (date: string) => format(new Date(date), "d MMM yy");
+
 export const formatStatus = (status: number) => statusName[status];
 
 export const isCreating = (status: number) => status === 0;
