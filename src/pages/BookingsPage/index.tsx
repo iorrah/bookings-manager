@@ -8,6 +8,7 @@ import { BookingsList } from "./BookingsList";
 import { BookingEditor } from "./BookingEditor";
 import { BookingCreator } from "./BookingCreator";
 import { Container } from "../../components/Container";
+import { useBreakpoint } from "../../hooks/useBreakpoint";
 
 export const BookingsPage = () => {
   const [bookingId, setBookingId] = useState<number | null>(null);
@@ -15,6 +16,7 @@ export const BookingsPage = () => {
   const [newBooking, setNewBooking] = useState<Booking | null>(null);
 
   const { bookings, findBooking, deleteBooking } = useContext(BookingsContext);
+  const breakpoint = useBreakpoint();
 
   const closeBooking = () => {
     setBookingId(null);
@@ -102,33 +104,43 @@ export const BookingsPage = () => {
     <Container className="flex py-10 grid grid-cols-12 gap-4">
       {/* TODO: present list and page in separate states on Mobile Viewport  */}
 
-      <aside className="col-span-3">
-        <BookingsList
-          selectedBookingId={bookingId || newBooking?.id}
-          onSelectBooking={handleBookingSelection}
-          onCreateBooking={handleStartBookingCreation}
-        />
-      </aside>
-
-      <article className="col-span-9">
-        {newBooking ? (
-          <BookingCreator
-            booking={newBooking}
-            onDiscard={handleDiscard}
-            onResetBookingCreation={handleBookingCreationReset}
+      {(bookingId || newBooking) && breakpoint === "phone" ? null : (
+        <aside
+          className={breakpoint === "phone" ? "col-span-12" : "col-span-3"}
+        >
+          <BookingsList
+            selectedBookingId={bookingId || newBooking?.id}
+            onSelectBooking={handleBookingSelection}
+            onCreateBooking={handleStartBookingCreation}
           />
-        ) : null}
+        </aside>
+      )}
 
-        {!newBooking && existingBooking ? (
-          <BookingEditor
-            booking={existingBooking}
-            onClose={handleCloseBooking}
-            onDelete={handleNextBooking}
-          />
-        ) : null}
+      {bookingId === null &&
+      newBooking === null &&
+      breakpoint === "phone" ? null : (
+        <article
+          className={breakpoint === "phone" ? "col-span-12" : "col-span-9"}
+        >
+          {newBooking ? (
+            <BookingCreator
+              booking={newBooking}
+              onDiscard={handleDiscard}
+              onResetBookingCreation={handleBookingCreationReset}
+            />
+          ) : null}
 
-        {!newBooking && !existingBooking ? <EmptyState /> : null}
-      </article>
+          {!newBooking && existingBooking ? (
+            <BookingEditor
+              booking={existingBooking}
+              onClose={handleCloseBooking}
+              onDelete={handleNextBooking}
+            />
+          ) : null}
+
+          {!newBooking && !existingBooking ? <EmptyState /> : null}
+        </article>
+      )}
     </Container>
   );
 };
