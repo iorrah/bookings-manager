@@ -18,11 +18,12 @@ export const BookingEditor: BookingEditorType = ({
   onClose,
   onDelete
 }) => {
+  const [draftBooking, setDraftBooking] = useState<Booking>(booking);
+  const [errorMessages, setErrorMessages] = useState<string[]>([]);
+
+  const { updateBooking } = useContext(BookingsContext);
   const { findProperty } = useContext(PropertiesContext);
   const property = findProperty(booking.propertyId);
-
-  const [draftBooking, setDraftBooking] = useState<Booking>(booking);
-  const { updateBooking } = useContext(BookingsContext);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -96,6 +97,7 @@ export const BookingEditor: BookingEditorType = ({
           <div className="col-span-6 border">
             <BookingForm
               booking={draftBooking}
+              errorMessages={errorMessages}
               onChange={handleChange}
               onDateChange={handleDateChange}
               onSubmit={handleSubmit}

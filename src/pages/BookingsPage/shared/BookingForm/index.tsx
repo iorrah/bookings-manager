@@ -9,6 +9,7 @@ import { isCreating } from "../../../../utils";
 
 type BookingForm = FC<{
   booking: Booking;
+  errorMessages: string[];
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onDateChange: (update: [Date, Date]) => void;
   onSubmit: (event: React.ChangeEvent<HTMLFormElement>) => void;
@@ -16,6 +17,7 @@ type BookingForm = FC<{
 
 export const BookingForm: BookingForm = ({
   booking,
+  errorMessages,
   onChange,
   onDateChange,
   onSubmit
@@ -85,7 +87,15 @@ export const BookingForm: BookingForm = ({
         visible={creating}
       />
 
-      <div className="flex justify-center px-2 py-8 gap-3">
+      {errorMessages.length ? (
+        <div className="px-2 py-4">
+          {errorMessages.map(message => (
+            <p className="text-rose-500 text-sm text-center">{message}</p>
+          ))}
+        </div>
+      ) : null}
+
+      <div className="flex justify-center px-2 py-4 gap-3">
         {/* TODO: create button components */}
 
         <button

@@ -21,17 +21,20 @@ export const BookingCreator: BookingCreatorType = ({
 }) => {
   const [draftBooking, setDraftBooking] = useState<Booking>(booking);
   const [property, setProperty] = useState<Property | null>(null);
+  const [errorMessages, setErrorMessages] = useState<string[]>([]);
 
   const { createBooking } = useContext(BookingsContext);
   const { findProperty } = useContext(PropertiesContext);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
+    let { name, value } = event.target;
 
-    setDraftBooking({
-      ...draftBooking,
-      [name]: value
-    });
+    if (name === "adultsAmount" || name === "childrenAmount") {
+      setDraftBooking({ ...draftBooking, [name]: parseInt(value, 10) || 0 });
+      return;
+    }
+
+    setDraftBooking({ ...draftBooking, [name]: value });
   };
 
   const handleDateChange = (update: [Date, Date]) => {
@@ -54,10 +57,42 @@ export const BookingCreator: BookingCreatorType = ({
     });
   };
 
+  const validateBooking = (booking: Booking) => {
+    let messages = [];
+
+    if (booking.adultsAmount < 1) {
+      messages.push("Invalid adults amount");
+    }
+
+    if ((booking.childrenAmount || 0) < 0) {
+      messages.push("Invalid children amount");
+    }
+
+    if (
+      property &&
+      booking.adultsAmount + (booking.childrenAmount || 0) >
+        property?.guestsLimit
+    ) {
+      messages.push(
+        `The guest limit for this property is ${property?.guestsLimit} people`
+      );
+    }
+
+    return messages;
+  };
+
   const handleSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
-    createBooking(draftBooking);
-    onResetBookingCreation();
+
+    const validationMessages = validateBooking(draftBooking);
+
+    if (validationMessages.length === 0) {
+      createBooking(draftBooking);
+      setErrorMessages([]);
+      onResetBookingCreation();
+    } else {
+      setErrorMessages(validationMessages);
+    }
   };
 
   useEffect(() => {
@@ -65,9 +100,7 @@ export const BookingCreator: BookingCreatorType = ({
   }, [booking]);
 
   useEffect(() => {
-    if (draftBooking.propertyId) {
-      setProperty(findProperty(draftBooking.propertyId));
-    }
+    setProperty(findProperty(draftBooking.propertyId));
   }, [draftBooking]);
 
   return (
@@ -85,17 +118,18 @@ export const BookingCreator: BookingCreatorType = ({
           />
         </div>
 
-        <p className="text-gray-500 mb-6">
-          Guest limit:{" "}
+        <p className="text-sm text-gray-500 mb-6">
+          Max:{" "}
           {property?.guestsLimit
             ? `${property?.guestsLimit} people`
-            : "(select property first)"}
+            : "(property not yet selected)"}
         </p>
 
         <div className="grid grid-cols-12 gap-4">
           <div className="col-span-6 border rounded-md">
             <BookingForm
               booking={draftBooking}
+              errorMessages={errorMessages}
               onChange={handleChange}
               onDateChange={handleDateChange}
               onSubmit={handleSubmit}

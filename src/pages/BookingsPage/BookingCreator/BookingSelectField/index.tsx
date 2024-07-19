@@ -28,7 +28,7 @@ export const BookingSelectField: BookingSelectFieldType = ({
   return (
     <p className="flex">
       <span className="mr-3">
-        Property Name <MandatoryFieldSymbol />
+        Property <MandatoryFieldSymbol />
       </span>
 
       <span className="border border-slate-300">
