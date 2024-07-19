@@ -6,6 +6,7 @@ import { BookingQuote } from "../shared/BookingQuote";
 import { Booking } from "../../../types";
 import { PropertiesContext } from "../../../providers/properties";
 import { fullDate, validateBooking } from "../../../utils";
+import Close from "../../../assets/close.svg";
 
 type BookingEditorType = FC<{
   booking: Booking;
@@ -77,7 +78,12 @@ export const BookingEditor: BookingEditorType = ({
         </p>
 
         <button className="text-sm" onClick={onClose}>
-          Close
+          <img
+            src={Close}
+            alt="Close Booking"
+            title="Close Booking"
+            className="w-4"
+          />
         </button>
       </div>
 

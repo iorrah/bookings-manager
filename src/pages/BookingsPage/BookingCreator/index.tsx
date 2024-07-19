@@ -5,9 +5,10 @@ import { BookingQuote } from "../shared/BookingQuote";
 import { BookingsContext } from "../../../providers/bookings";
 import { Booking, Property } from "../../../types";
 import { validateBooking } from "../../../utils";
+import { PropertiesContext } from "../../../providers/properties";
+import Close from "../../../assets/close.svg";
 
 import { BookingSelectField } from "./BookingSelectField";
-import { PropertiesContext } from "../../../providers/properties";
 
 type BookingCreatorType = FC<{
   booking: Booking;
@@ -87,8 +88,14 @@ export const BookingCreator: BookingCreatorType = ({
           New Booking{" "}
           <span className="text-slate-700 text-sm	">(not saved)</span>
         </p>
+
         <button className="text-sm" onClick={onDiscard}>
-          Discard Booking
+          <img
+            src={Close}
+            alt="Discard Booking"
+            title="Discard Booking"
+            className="w-4"
+          />
         </button>
       </div>
 
