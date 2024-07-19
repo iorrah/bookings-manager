@@ -101,7 +101,7 @@ export const BookingsPage = () => {
   }, [bookingId, bookings]);
 
   return (
-    <Container className="flex py-10 grid grid-cols-12 gap-4">
+    <Container className="flex py-6 sm:py-8 grid grid-cols-12 gap-4">
       {/* TODO: present list and page in separate states on Mobile Viewport  */}
 
       {(bookingId || newBooking) && breakpoint === "phone" ? null : (

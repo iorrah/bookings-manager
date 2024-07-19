@@ -100,7 +100,7 @@ export const BookingForm: BookingForm = ({
 
         <button
           type="submit"
-          className="bg-blue-600 hover:bg-blue-700 px-5 py-2.5 text-sm leading-5 rounded-sm font-semibold text-white shadow-sm"
+          className="bg-blue-600 hover:bg-blue-700 px-5 py-2.5 text-sm leading-5 rounded-sm font-semibold text-white shadow-sm w-full lg:w-auto"
         >
           {creating ? "Save Booking" : "Save Changes"}
         </button>

@@ -69,19 +69,21 @@ export const BookingEditor: BookingEditorType = ({
   }, [booking]);
 
   return (
-    <div className="rounded-lg shadow-lg bg-white">
-      <div className="flex justify-between border-b px-8 py-4 mb-2 bg-slate-100">
-        <p>
+    <div className="rounded-lg sm:shadow-lg bg-white">
+      <div className="flex justify-between border-b pb-6 sm:py-4 sm:px-8 sm:py-4 mb-2 sm:bg-slate-100">
+        <p className="text-sm sm:text-base">
           Booking Reference:{" "}
           <span className="text-slate-700 text-sm	">#{booking.id}</span>
         </p>
 
-        <button onClick={onClose}>Close</button>
+        <button className="text-sm" onClick={onClose}>
+          Close
+        </button>
       </div>
 
-      <div className="p-8 pb-10">
-        <div className="flex justify-between items-center mb-6">
-          <div>
+      <div className="p-0 py-3 pb-6 sm:p-8 sm:pb-10">
+        <div className="flex justify-between lg:items-center flex-col lg:flex-row mb-6">
+          <div className="mb-6 lg:mb-0">
             <p className="text-lg	font-semibold">{booking.guestName}</p>
 
             <p>
@@ -104,7 +106,7 @@ export const BookingEditor: BookingEditorType = ({
         </div>
 
         <div className="grid grid-cols-12 gap-4">
-          <div className="col-span-6 border">
+          <div className="col-span-12 lg:col-span-6 border">
             <BookingForm
               booking={draftBooking}
               errorMessages={errorMessages}
@@ -114,7 +116,7 @@ export const BookingEditor: BookingEditorType = ({
             />
           </div>
 
-          <div className="col-span-6 border">
+          <div className="col-span-12 lg:col-span-6 border">
             <BookingQuote booking={draftBooking} />
           </div>
         </div>

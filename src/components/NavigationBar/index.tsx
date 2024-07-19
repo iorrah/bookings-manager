@@ -4,15 +4,15 @@ import User from "./user.svg";
 
 export const NavigationBar = () => (
   <nav className="shadow-md bg-white">
-    <Container className="flex justify-between py-4 items-center">
+    <Container className="flex justify-between py-2 sm:py-4 items-center">
       <img
         src={Logo}
         alt="Bookings Manageer Logo"
-        className="w-16 sm:w-24 cursor-pointer"
+        className="w-14 sm:w-24 cursor-pointer"
       />
 
       <p className="flex items-center">
-        <span className="mr-1.5 font-semibold text-sm sm:text-base">
+        <span className="font-semibold text-sm sm:text-base">
           Bookings Page
         </span>
       </p>
