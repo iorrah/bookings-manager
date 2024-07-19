@@ -7,6 +7,7 @@ import { EmptyState } from "./EmptyState";
 import { BookingsList } from "./BookingsList";
 import { BookingEditor } from "./BookingEditor";
 import { BookingCreator } from "./BookingCreator";
+import { Container } from "../../components/Container";
 
 export const BookingsPage = () => {
   const [bookingId, setBookingId] = useState<number | null>(null);
@@ -98,7 +99,7 @@ export const BookingsPage = () => {
   }, [bookingId, bookings]);
 
   return (
-    <div className="container mx-auto flex py-10 grid grid-cols-12 gap-4">
+    <Container className="flex py-10 grid grid-cols-12 gap-4">
       {/* TODO: present list and page in separate states on Mobile Viewport  */}
 
       <aside className="col-span-3">
@@ -128,6 +129,6 @@ export const BookingsPage = () => {
 
         {!newBooking && !existingBooking ? <EmptyState /> : null}
       </article>
-    </div>
+    </Container>
   );
 };
