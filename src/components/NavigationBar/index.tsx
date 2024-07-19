@@ -8,17 +8,19 @@ export const NavigationBar = () => (
       <img
         src={Logo}
         alt="Bookings Manageer Logo"
-        className="w-24 cursor-pointer"
+        className="w-16 sm:w-24 cursor-pointer"
       />
 
       <p className="flex items-center">
-        <span className="mr-1.5 font-semibold">Bookings Page</span>
+        <span className="mr-1.5 font-semibold text-sm sm:text-base">
+          Bookings Page
+        </span>
       </p>
 
       <img
         src={User}
         alt="User Profile Image"
-        className="rounded-full w-8 cursor-pointer border border-blue-600 border-4"
+        className="rounded-full w-6 sm:w-8 cursor-pointer border border-blue-600 border-4"
       />
     </Container>
   </nav>
