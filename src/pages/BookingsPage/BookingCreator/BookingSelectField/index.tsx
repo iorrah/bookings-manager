@@ -32,7 +32,12 @@ export const BookingSelectField: BookingSelectFieldType = ({
       </span>
 
       <span className="border border-slate-300">
-        <select autoFocus value={propertyId} onChange={handleChange}>
+        <select
+          autoFocus
+          value={propertyId}
+          onChange={handleChange}
+          className="w-48 sm:w-56 md:w-64 lg:w-auto"
+        >
           <option value="0">Please select a property</option>
 
           {properties.map(({ id, title }) => (

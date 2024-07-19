@@ -81,13 +81,18 @@ export const BookingCreator: BookingCreatorType = ({
   }, [draftBooking]);
 
   return (
-    <div className="rounded-lg shadow-lg bg-white">
-      <div className="flex justify-between border-b px-8 py-4 mb-2 bg-slate-100">
-        <p>New Booking (not saved)</p>
-        <button onClick={onDiscard}>Discard Booking</button>
+    <div className="rounded-lg sm:shadow-lg bg-white">
+      <div className="flex justify-between border-b pb-6 sm:py-4 sm:px-8 sm:py-4 mb-2 sm:bg-slate-100">
+        <p className="text-sm sm:text-base">
+          New Booking{" "}
+          <span className="text-slate-700 text-sm	">(not saved)</span>
+        </p>
+        <button className="text-sm" onClick={onDiscard}>
+          Discard Booking
+        </button>
       </div>
 
-      <div className="p-8 pb-10">
+      <div className="p-0 py-3 pb-6 sm:p-8 sm:pb-10">
         <div className="flex justify-between mb-2">
           <BookingSelectField
             defaultPropertyId={booking.propertyId}
@@ -103,7 +108,7 @@ export const BookingCreator: BookingCreatorType = ({
         </p>
 
         <div className="grid grid-cols-12 gap-4">
-          <div className="col-span-6 border rounded-md">
+          <div className="col-span-12 lg:col-span-6 border">
             <BookingForm
               booking={draftBooking}
               errorMessages={errorMessages}
@@ -113,7 +118,7 @@ export const BookingCreator: BookingCreatorType = ({
             />
           </div>
 
-          <div className="col-span-6 border rounded-md">
+          <div className="col-span-12 lg:col-span-6 border">
             <BookingQuote booking={draftBooking} />
           </div>
         </div>
