@@ -102,8 +102,6 @@ export const BookingsPage = () => {
 
   return (
     <Container className="flex py-6 sm:py-8 grid grid-cols-12 gap-4">
-      {/* TODO: present list and page in separate states on Mobile Viewport  */}
-
       {(bookingId || newBooking) && breakpoint === "phone" ? null : (
         <aside className="col-span-12 sm:col-span-4 lg:col-span-3">
           <BookingsList

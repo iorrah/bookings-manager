@@ -19,14 +19,14 @@ export const BookingsList: BookingsListType = ({
 
   return (
     <>
-      <div className="max-h-[33.9rem] overflow-scroll mb-8">
+      <div className="max-h-[33.9rem] overflow-scroll mb-12 sm:mb-8">
         {bookings.map(booking => {
           const bookingRingStyle =
             selectedBookingId === booking.id ? ringSyle : "";
 
           return (
             <button
-              className={`text-left block py-3 px-4 lg:py-4 lg:px-6 w-full mb-4 bg-white rounded-lg shadow-lg border sm:border-0 ${bookingRingStyle}`}
+              className={`text-left block py-3 px-4 lg:py-5 lg:px-6 w-full mb-4 bg-white rounded-lg shadow-lg border sm:border-0 ${bookingRingStyle}`}
               onClick={() => onSelectBooking(booking.id)}
               key={booking.id}
             >
@@ -70,14 +70,16 @@ export const BookingsList: BookingsListType = ({
         })}
       </div>
 
-      <button
-        className={`bg-slate-100 hover:bg-slate-200 px-5 py-4 text-sm leading-5 rounded-lg font-semibold text-blue-600 border border-slate-300 shadow-sm w-full ${
-          selectedBookingId === 0 ? ringSyle : ""
-        }`}
-        onClick={onCreateBooking}
-      >
-        Create Booking
-      </button>
+      <div className="fixed sm:static bottom-4 left-4 right-4 sm:bottom sm:left sm:right bg-white sm:bg-transparent pt-4 sm:pt-0">
+        <button
+          className={`bg-slate-100 hover:bg-slate-200 px-5 py-4 text-sm leading-5 rounded-lg font-semibold text-blue-600 border border-slate-300 shadow-sm w-full ${
+            selectedBookingId === 0 ? ringSyle : ""
+          }`}
+          onClick={onCreateBooking}
+        >
+          Create Booking
+        </button>
+      </div>
     </>
   );
 };

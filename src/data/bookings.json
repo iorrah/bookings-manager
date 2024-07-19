@@ -54,5 +54,19 @@
     "guestPhoneNumber": "+1836403846",
     "status": 1,
     "createdAt": "2024-04-20T00:00:00.000Z"
+  },
+  {
+    "id": 7068413863,
+    "propertyId": 2350155759,
+    "checkIn": "2024-12-30T00:00:00.000Z",
+    "checkOut": "2025-01-01T00:00:00.000Z",
+    "adultsAmount": 3,
+    "childrenAmount": 1,
+    "note": "We'll bring a bicycle",
+    "guestName": "Lisa Parker",
+    "guestEmail": "lisa.parker@email.com",
+    "guestPhoneNumber": "+582937845",
+    "status": 1,
+    "createdAt": "2024-05-03T00:00:00.000Z"
   }
 ]
