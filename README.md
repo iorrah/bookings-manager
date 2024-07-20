@@ -1,8 +1,10 @@
 # Booking Manager
 
+![Document Image](docs/screenshots/booking-editor.png)
+
 This application enables users to create, read, edit and delete property bookings. The interface is fully responsive and adapts to all screen sizes.
 
-## Instalation
+## Installation
 
 ```js
 npm install
@@ -11,7 +13,7 @@ npm run dev
 
 ## Architecture
 
-The diagram bellow gives an overview on how the component tree integrates. Currently we have a significant amount of Business Logic across the Model, Controller and View Layers. Limiting this logic to abstract layers would be beneficial for the maintainability and scalability of the application.
+The diagram below gives an overview on how the component tree integrates. Currently we have a significant amount of Business Logic across the Model, Controller and View Layers. Limiting this logic to abstract layers would be beneficial for the maintainability and scalability of the application.
 
 ![Document Image](docs/architecture/general.jpg)
 
@@ -36,7 +38,7 @@ The project consists of a single page where all the management operations can be
 
 See Wireframes below for reference on idealization concepts:
 
-#### Booking Cretor
+#### Booking Creator
 
 ![Document Image](docs/booking-creator.png)
 
