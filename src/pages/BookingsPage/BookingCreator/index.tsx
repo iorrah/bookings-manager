@@ -68,6 +68,7 @@ export const BookingCreator: BookingCreatorType = ({
     if (validationMessages.length === 0) {
       createBooking(draftBooking);
       setErrorMessages([]);
+      setProperty(null);
       onResetBookingCreation();
       toast.success("Booking created!");
     } else {
@@ -105,7 +106,7 @@ export const BookingCreator: BookingCreatorType = ({
       <div className="p-0 py-3 pb-6 sm:p-8 sm:pb-10">
         <div className="flex justify-between mb-2">
           <BookingSelectField
-            defaultPropertyId={booking.propertyId}
+            defaultPropertyId={draftBooking.propertyId}
             onchange={handlePropertyChange}
           />
         </div>

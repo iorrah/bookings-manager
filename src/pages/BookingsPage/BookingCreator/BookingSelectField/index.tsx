@@ -1,4 +1,4 @@
-import { FC, useContext, useState } from "react";
+import { FC, useContext, useEffect, useState } from "react";
 
 import { PropertiesContext } from "../../../../providers/properties";
 import { MandatoryFieldSymbol } from "../../../../components/MandatoryFieldSymbol";
@@ -17,6 +17,7 @@ export const BookingSelectField: BookingSelectFieldType = ({
   const [propertyId, setPropertyId] = useState<string>(
     String(defaultPropertyId)
   );
+
   const { properties } = useContext(PropertiesContext);
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -24,6 +25,12 @@ export const BookingSelectField: BookingSelectFieldType = ({
     setPropertyId(value);
     onchange(parseInt(value, 10));
   };
+
+  useEffect(() => {
+    if (!defaultPropertyId) {
+      setPropertyId("0");
+    }
+  }, [defaultPropertyId]);
 
   return (
     <p className="flex">
