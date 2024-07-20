@@ -11,6 +11,8 @@ import Close from "../../../assets/close.svg";
 
 import { BookingSelectField } from "./BookingSelectField";
 
+// TODO: abstract operations to Hook file
+
 type BookingCreatorType = FC<{
   booking: Booking;
   onDiscard: () => void;

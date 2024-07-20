@@ -4,7 +4,7 @@ import "@testing-library/jest-dom";
 
 import App from "./App";
 
-describe("Read Data", () => {
+describe("Read Booking", () => {
   it("should display the Booking Details when the Booking on the list is clicked", () => {
     // ARRANGE
     render(<App />);
@@ -48,7 +48,7 @@ describe("Read Data", () => {
   });
 });
 
-describe("Create Data", () => {
+describe("Create Booking", () => {
   it.skip("should hide the Booking Details and display the Booking Creation Form when the Button is clicked", () => {
     // ARRANGE
     render(<App />);
@@ -75,3 +75,11 @@ describe("Create Data", () => {
     // ...
   });
 });
+
+// TODO: add tests for the other operations
+
+// describe("Update Booking", () => {
+// });
+
+// describe("Delete Booking", () => {
+// });

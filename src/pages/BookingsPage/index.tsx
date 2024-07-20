@@ -11,6 +11,8 @@ import { BookingsList } from "./BookingsList";
 import { BookingEditor } from "./BookingEditor";
 import { BookingCreator } from "./BookingCreator";
 
+// TODO: abstract business logic from the page layer
+
 export const BookingsPage = () => {
   const [bookingId, setBookingId] = useState<number | null>(null);
   const [existingBooking, setExistingBooking] = useState<Booking | null>(null);
@@ -65,6 +67,7 @@ export const BookingsPage = () => {
     let date = new Date();
     date.setDate(date.getDate() + 1);
 
+    // TODO: move default state to constant
     setNewBooking({
       id: 0,
       propertyId: 0,
