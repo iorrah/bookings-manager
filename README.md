@@ -1,4 +1,4 @@
-# Booking Manager
+# Bookings Manager
 
 ![Document Image](docs/screenshots/booking-editor.png)
 
